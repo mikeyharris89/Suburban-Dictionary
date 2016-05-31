@@ -6,12 +6,14 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
+var SessionApiUtil = require('./util/session_api_util');
+var UserApiUtil = require('./util/user_api_util');
 
 var App = React.createClass({
   render: function() {
     return(
       <div>
-        <header><h1>SubUrban_Dictionary</h1></header>
+        <header><h1>SubUrban Dictionary</h1></header>
         {this.props.children}
       </div>
     );

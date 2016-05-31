@@ -1,4 +1,4 @@
-var SessionActions = require('./actions/session_actions');
+var SessionActions = require('../actions/session_actions');
 
 
 var SessionApiUtil = {
@@ -9,7 +9,7 @@ var SessionApiUtil = {
       data: {user: credentials},
       success: function(currentUser) {
         console.log("Successful login!");
-        ServerActions.receiveCurrentUser(currentUser);
+        SessionActions.receiveCurrentUser(currentUser);
       },
       error: function() {
         console.log("Failed");
@@ -23,7 +23,7 @@ var SessionApiUtil = {
       url: "api/session/",
       success: function(currentUser) {
         console.log("Successful logout!");
-        ServerActions.removeCurrentUser(currentUser);
+        SessionActions.removeCurrentUser(currentUser);
       },
       error: function() {
         console.log("Failed");
@@ -31,7 +31,7 @@ var SessionApiUtil = {
     })
   },
 
-  fetchCurrentUser: function(id) {
+  fetchCurrentUser: function() {
     $.ajax({
       type: 'GET',
       url: "api/session/",

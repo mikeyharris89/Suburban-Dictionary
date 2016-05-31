@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  before_action :require_user
+  # before_action :require_user
 
   def create
     @user = User.find_by_credentials(

@@ -1,6 +1,6 @@
 class Api::SessionsController < ApplicationController
   before_action :require_user
-   
+
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       @errors = ['invalid credentials']
-      render "api/shared/error", status 401
+      render "api/shared/error", status: 401
     end
   end
 
@@ -22,7 +22,7 @@ class Api::SessionsController < ApplicationController
       render "api/users/show"
     else
       @errors = nil
-      render "api/shared/error", status 404
+      render "api/shared/error", status: 404
     end
 
   end

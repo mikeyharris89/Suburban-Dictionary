@@ -33,7 +33,7 @@ var App = React.createClass({
     return (
       <div>
         <header>
-          <h1>Suburban Dictionary</h1>
+          <h1>Suburban <br/> Dictionary</h1>
           { this.greeting() }
         </header>
         {this.props.children}

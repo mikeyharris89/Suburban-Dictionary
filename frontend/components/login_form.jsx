@@ -83,9 +83,10 @@ var LoginForm = React.createClass({
 			<form onSubmit={this.handleSubmit}>
 
         <p className="login">{ this.formType() } or { navLink } to
-          <b> post new definitions, images, and sounds</b>
+          <b> post new definitions, images, and sounds </b>
+          and create lists of favorites
         </p>
-        <p> and create lists of favorites</p>
+        <p> </p>
         { this.fieldErrors("base") }
 
         <br />

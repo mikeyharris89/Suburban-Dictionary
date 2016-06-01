@@ -65,9 +65,23 @@ input {
   margin-right: auto;
 }
 
-Link {
-  text: blue;
-  text-decoration: underline; 
+h1 {
+  color: #EFFF00;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 45px;
+  font-family: copperplate;
+  transition: color 300ms ease-out;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
+
+h1:hover {
+  text-shadow: -1px 0 #134FE6, 0 1px #134FE6, 1px 0 #134FE6, 0 -1px #134FE6;
+  color: #05ff56;
 }
 .submit:hover {
   cursor: pointer;

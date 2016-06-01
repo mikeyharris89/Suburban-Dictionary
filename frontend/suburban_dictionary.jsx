@@ -8,6 +8,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 var SessionApiUtil = require('./util/session_api_util');
 var UserApiUtil = require('./util/user_api_util');
+var LoginForm = require('./components/login_form');
 
 var App = React.createClass({
   render: function() {
@@ -23,6 +24,8 @@ var App = React.createClass({
 var Router = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <Route path="/login" component={ LoginForm } />
+      <Route path="/signup" component={ LoginForm } />
     </Route>
   </Router>
 );

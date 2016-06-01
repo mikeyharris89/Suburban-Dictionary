@@ -29,14 +29,14 @@ class Api::SessionsController < ApplicationController
 
 
   def destroy
-    # @user = current_user
-    # if @user
-    #   render "api/users/show"
-    # else
-    #   @errors = ['no one logged in']
-    #   render "api/shared/error", status: 404
-    # end
-    render json: {}
+    @user = current_user
+    if @user
+      render "api/users/show"
+    else
+      @errors = ['no one logged in']
+      render "api/shared/error", status: 404
+    end
+
   end
 
 

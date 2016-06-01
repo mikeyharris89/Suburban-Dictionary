@@ -1,7 +1,7 @@
 #SuburbanDictionary
 
 [Heroku link][heroku]
-[heroku]: http://www.suburbandictionary.herokuapp.com
+[heroku]: suburbandictionary.herokuapp.com
 
 ## Minimum Viable Product
 

@@ -5,3 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Term.create!(
+  name: "Spritzer",
+  definition: "a housewife's best friend",
+  sentence: "I'll have anotha spritzah!",
+  user_id: 1
+  )
+
+Term.create!(
+  name: "Curfew",
+  definition: "A variable pertaining to when teens need to be home.",
+  sentence: "Ugh, how come your curfew is 10. Nerd",
+  user_id: 1
+  )
+Term.create!(
+  name: "Maria",
+  definition: "She raised our childen and is a dear family member, but we're still voting for Trump",
+  sentence: "Maria I'll be home at 10, make whatever for dinner",
+  user_id: 2
+  )
+Term.create!(
+  name: "Minivan",
+  definition: "The vessel in which we drive our 2 kids around.",
+  sentence: "Billy, pick up your goldfish off of the minivan floor!",
+  user_id: 1
+  )

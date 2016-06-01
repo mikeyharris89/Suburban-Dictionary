@@ -6,7 +6,7 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
-var LoginForm = require('./components/login_form');
+var LoginForm = require('./components/loginForm');
 var App = require('./components/app');
 
 

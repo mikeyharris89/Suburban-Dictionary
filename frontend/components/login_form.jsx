@@ -1,9 +1,9 @@
 var React = require('react');
 var Link = require('react-router').Link;
-var SessionApiUtil = require('./../util/session_api_util');
-var SessionStore = require('./../stores/session_store');
-var ErrorStore = require('./../stores/error_store');
-var UserApiUtil = require('./../util/user_api_util');
+var SessionApiUtil = require('../util/session_api_util');
+var SessionStore = require('../stores/session_store');
+var ErrorStore = require('../stores/error_store');
+var UserApiUtil = require('../util/user_api_util');
 
 var LoginForm = React.createClass({
 
@@ -81,32 +81,37 @@ var LoginForm = React.createClass({
 
 		return (
 			<form onSubmit={this.handleSubmit}>
-        { this.formType() } or { navLink }
 
+        <p className="login">{ this.formType() } or { navLink } to
+          <b> post new definitions, images, and sounds</b>
+        </p>
+        <p> and create lists of favorites</p>
         { this.fieldErrors("base") }
 
         <br />
-				<label> Username:
-          { this.fieldErrors("username") }
-					<input
-          type="text"
-          value={this.state.username}
-          onChange={this.usernameChange}
-          />
-				</label>
+
+        { this.fieldErrors("username") }
+				<input
+        type="text"
+        placeholder="Username"
+        value={this.state.username}
+        onChange={this.usernameChange}
+        />
+
 
         <br />
-				<label> Password:
-          { this.fieldErrors("password") }
-					<input
-          type="password"
-          value={this.state.password}
-          onChange={this.passwordChange}
-          />
-				</label>
+
+        { this.fieldErrors("password") }
+				<input
+        type="password"
+        placeholder="Password"
+        value={this.state.password}
+        onChange={this.passwordChange}
+        />
+
 
         <br />
-				<input type="submit" value="Submit" />
+				<button className="submit" type="submit">Submit!</button>
 			</form>
 		);
 	}

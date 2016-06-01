@@ -1,11 +1,11 @@
 var SessionActions = require('../actions/session_actions');
-
+var ErrorActions = require('../actions/error_actions');
 
 var SessionApiUtil = {
   login: function(credentials) {
     $.ajax({
       type: 'POST',
-      url: "api/session/",
+      url: "/api/session/",
       data: {user: credentials},
       success: function(currentUser) {
         console.log("Successful login!");
@@ -16,13 +16,14 @@ var SessionApiUtil = {
         var errors = xhr.responseJSON;
 	      ErrorActions.setErrors("login", errors);
 			}
-    })
+    });
   },
 
   logout: function(){
     $.ajax({
       type: 'DELETE',
-      url: "api/session/",
+      url: "/api/session/",
+
       success: function(currentUser) {
         console.log("Successful logout!");
         SessionActions.removeCurrentUser(currentUser);
@@ -30,24 +31,24 @@ var SessionApiUtil = {
       error: function () {
 			  console.log("Logout error in SessionApiUtil#logout");
 			}
-    })
+    });
   },
 
   fetchCurrentUser: function() {
     $.ajax({
       type: 'GET',
-      url: "api/session/",
+      url: "/api/session/",
       success: function(user){
-        SessionActions.receiveCurrentUser(currentUser);
+        SessionActions.receiveCurrentUser(user);
       },
       error: function (xhr) {
 			  console.log("Error in SessionApiUtil#fetchCurrentUser");
 			}
 
-    })
+    });
   },
 
-}
+};
 
 window.SessionApiUtil = SessionApiUtil;
 module.exports = SessionApiUtil;

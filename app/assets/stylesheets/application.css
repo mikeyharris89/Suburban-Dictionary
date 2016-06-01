@@ -13,3 +13,80 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, section, article, h1, h2, p, strong, em, a, button, input {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+/*input .username {
+
+}*/
+
+button {
+  border-style: solid;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 1rem;
+  padding-right: 20px;
+  padding-bottom: 1.0625rem;
+  padding-left: 20px;
+  font-size: 24px;
+  background-color: #134FE6;
+  border-color: #000000;
+  color: #FFFFFF;
+  transition: background-color 300ms ease-out;
+}
+
+input {
+  display: block;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: calc(100% - 200px);
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+Link {
+  text: blue;
+  text-decoration: underline; 
+}
+.submit:hover {
+  cursor: pointer;
+  background-color: #134FE6;
+  color: #05ff56;
+}
+
+.submit {
+  display: block;
+
+  padding: 10px;
+  margin-top: 40px;
+  background-color: #EFFF00;
+  color: #000000;
+  width: calc(100% - 67px);
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+}

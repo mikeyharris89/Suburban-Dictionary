@@ -18,10 +18,10 @@ function _logout() {
   _currentUserHasBeenFetched = true;
 }
 
-// function _setErrors(errors) {
-//   _currentUserHasBeenFetched = false;
-//   _currentUser = {};
-// }
+function _setErrors(errors) {
+  _currentUserHasBeenFetched = false;
+  _currentUser = {};
+}
 
 SessionStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -39,10 +39,10 @@ SessionStore.__onDispatch = function (payload) {
 SessionStore.currentUser = function () {
 	return $.extend({}, _currentUser);
 };
-//
-// SessionStore.errors = function () {
-//   return [].slice.call(_errors);
-// };
+
+SessionStore.errors = function () {
+  return [].slice.call(_errors);
+};
 
 
 SessionStore.currentUserHasBeenFetched = function () {
@@ -50,7 +50,7 @@ SessionStore.currentUserHasBeenFetched = function () {
 };
 
 SessionStore.isUserLoggedIn = function () {
-  return !!_currentUser.id;
+  return !!_currentUser.username;
 };
 
 window.SessionStore = SessionStore;

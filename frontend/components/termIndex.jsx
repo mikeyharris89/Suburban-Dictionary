@@ -24,7 +24,7 @@ var TermIndex = React.createClass({
   render: function () {
     // debugger
     return(
-      <div className="term-index">
+      <div className="content">
         <ul>
         {
           this.state.terms.map(function(term){

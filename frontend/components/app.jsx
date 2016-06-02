@@ -15,7 +15,7 @@ var App = React.createClass({
     	return (
     		<hgroup>
     			<h2>Hi, {SessionStore.currentUser().username}!</h2>
-    			<input type="submit" value="logout" onClick={ SessionApiUtil.logout } />
+    			<input className="logout" type="submit" value="logout" onClick={ SessionApiUtil.logout } />
     		</hgroup>
     	);
     } else if (["/login", "/signup"].indexOf(this.props.location.pathname) === -1) {
@@ -32,7 +32,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <header>
+        <header className= "suburban-top-bar">
           <h1>Suburban <br/> Dictionary</h1>
           { this.greeting() }
         </header>

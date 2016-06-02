@@ -16,13 +16,23 @@ var TermIndexItem = React.createClass({
   },
 
   render: function() {
-    
     return (
-      <li>
-        <Link to={"/terms/" + this.props.term.id}>{this.props.term.name}</Link>&nbsp;
-        <button onClick={this.editTerm}>Edit</button>&nbsp;
-        <button onClick={this.deleteTerm}>Delete</button>
-      </li>
+      <div className="def-panel">
+        <div>
+          <div className="date-head">{this.props.term.date_head}</div>
+        </div>
+        <Link to={"/terms/" + this.props.term.id} className="term-name">{this.props.term.name}</Link>&nbsp;
+        <div className="definition">{this.props.term.definition}</div>
+        <div className="sentence">{this.props.term.sentence}</div>
+        <div className="contributor">by
+            <a className="term_author">{this.props.term.username}</a>
+            {this.props.term.date_string}
+        </div>
+        <div className= "group button-bar">
+          <button className="term-change" onClick={this.editTerm}>Edit</button>&nbsp;
+          <button className="term-change" onClick={this.deleteTerm}>Delete</button>
+        </div>
+      </div>
     );
   }
 });

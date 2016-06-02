@@ -1,3 +1,4 @@
 json.array! @terms do |term|
-  json.extract! term, :name, :definition, :sentence, :id
+  json.partial!('term', term: term)
+  json.username term.user.username
 end

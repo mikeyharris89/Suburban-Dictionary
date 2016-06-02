@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body, section, article, h1, h2, p, strong, em, a, button, input {
+html, body, section, article, h1, h2, p, strong, em, a, button, input, {
   margin: 0;
   border: 0;
   padding: 0;
@@ -30,11 +30,19 @@ html, body, section, article, h1, h2, p, strong, em, a, button, input {
 /*input .username {
 
 }*/
-
+body {
+  background: #EEEEEE;
+  position: relative;;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.4;
+}
 button {
   border-style: solid;
   border-radius: 5px;
   border: 1px solid black;
+  box-shadow: 0 2px 0 black;
   font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: normal;
   line-height: normal;
@@ -71,8 +79,11 @@ h1 {
   font-size: 45px;
   font-family: copperplate;
   transition: color 300ms ease-out;
+  margin-top: 0px;
 }
-
+h2 {
+  color: #EFFF00;
+}
 a {
   color: blue;
   text-decoration: underline;
@@ -101,4 +112,95 @@ h1:hover {
   margin-right: auto;
   font-weight: bold;
   font-size: 24px;
+}
+
+.def-panel {
+  border-style: solid;
+  border-width: 0px;
+  border-color: #e3e3e3;
+  margin-bottom: 1.25rem;
+  padding: 32px;
+  background: #FFFFFF;
+  color: #333333;
+  box-shadow: 1px 1px 2px #DBDBDB;
+  word-wrap: break-word;
+}
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.content {
+vertical-align: top;
+padding-top: 0;
+padding-bottom: 10px;
+width: 680px;
+}
+
+.term-name {
+  color: #134FE6;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 129%;
+  text-decoration: none;
+  vertical-align: middle;
+  text-decoration: none;
+}
+.definition {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: #2C353C;
+}
+
+.sentence {
+  font-style: italic;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.button-bar {
+  position: relative;
+}
+.term-change {
+  /*position: absolute;*/
+  left: 20px;
+  float: right;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 0px;
+  margin-left: 16px;
+  background-color: #EFFF00;
+  color: black;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+
+}
+.term-change:hover {
+  cursor: pointer;
+  background-color: #134FE6;
+  color: #05ff56;
+}
+.date-head {
+font-weight: bold;
+font-size: 0.8125rem;
+display: inline-block;
+/*vertical-align: super;*/
+background-color: #EFFF00;
+}
+
+.contributor {
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+.suburban-top-bar {
+  background-color: #1D2439;
+}
+.logout {
+  width: 150px;
+  margin-bottom: 15px;
+  margin-left: 10px;
 }

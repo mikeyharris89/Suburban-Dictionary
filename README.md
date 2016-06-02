@@ -44,46 +44,46 @@ Suburban dictionary will be cool enough to allow a user to:
 ## Implementation Timeline
 
 ### Phase 0: Organization (.5 day)
-- [ ] get clarification on website. Are various indexes different components?
+- [ X ] get clarification on website. Are various indexes different components?
 Or related.
-- [ ] seems like a word can have many definitions, but each word instance is a
+- [ X ] seems like a word can have many definitions, but each word instance is a
 different, and has its own definition attribute.
-- [ ] How do we group words together. WordDetailItem? Is this a necessary feature, or should we just have a show page for the word.
+- [ X ] How do we group words together. WordDetailItem? Is this a necessary feature, or should we just have a show page for the word.
 
 ### Phase 1: Backend setup and User Authentication (0.5 days)
 
 **Objective:** Functioning rails project with Authentication
 
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
-- [ ] css style signup/signin pages
+- [ X ] create `User` model
+- [ X ] authentication
+- [ X ] user signup/signin pages
+- [ X ] blank landing page after signin
+- [ X ] css style signup/signin pages
 
 ### Phase 2: Words Model, API, and basic APIUtil (1.5 days)
 
 **Objective:** Words can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Word` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for words (`WordsController`)
-- [ ] jBuilder views for words
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
-- [ ] begin styling CRUD components
+- [ X ] create `Word` model
+- [ X ] seed the database with a small amount of test data
+- [ X ] CRUD API for words (`WordsController`)
+- [ X ] jBuilder views for words
+- [ X ] setup Webpack & Flux scaffold
+- [ X ] setup `APIUtil` to interact with the API
+- [ X ] test out API interaction in the console.
+- [ X ] begin styling CRUD components
 
 ### Phase 3: Flux Architecture and Router (1.5 days)
 
 **Objective:** Words can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
-- [ ] implement each word component, building out the flux loop as needed.
-  - [ ] `WordsIndex`
-  - [ ] `WordIndexItem`
+- [ X ] setup the flux loop with skeleton files
+- [ X ] setup React Router
+- [ X ] implement each word component, building out the flux loop as needed.
+  - [ X ] `WordsIndex`
+  - [ X ] `WordIndexItem`
   - [ ] `WordForm`
 - [ ] Tighten up styling for CRUD components
 

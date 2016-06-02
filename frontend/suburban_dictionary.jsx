@@ -8,13 +8,15 @@ var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 var LoginForm = require('./components/loginForm');
 var App = require('./components/app');
+var TermIndex = require('./components/termIndex');
 
 
-var Router = (
+var router = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <Route path="/login" component={ LoginForm } />
-      <Route path="/signup" component={ LoginForm } />
+      <IndexRoute component={ TermIndex } />
+      <Route path="login" component={ LoginForm } />
+      <Route path="signup" component={ LoginForm } />
     </Route>
   </Router>
 );
@@ -36,5 +38,5 @@ function _ensureLoggedIn(nextState, replace, asyncDoneCallback) {
 
 document.addEventListener('DOMContentLoaded', function(){
   var root = document.getElementById('content');
-  ReactDOM.render(Router, root);
+  ReactDOM.render(router, root);
 });

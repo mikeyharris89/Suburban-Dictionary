@@ -3,21 +3,21 @@ var AppDispatcher = require('../dispatcher/dispatcher'),
 
 var TermActions = {
   receiveAllTerms: function (terms) {
-    Dispatcher.dispatch({
+    AppDispatcher.dispatch({
       actionType: TermConstants.TERMS_RECEIVED,
       terms: terms
     });
   },
 
   receiveSingleTerm: function (term) {
-    Dispatcher.dispatch({
+    AppDispatcher.dispatch({
       actionType: TermConstants.TERM_RECEIVED,
       term: term
     });
   },
 
   removeTerm: function (term) {
-    Dispatcher.dispatch({
+    AppDispatcher.dispatch({
       actionType: TermConstants.TERM_RECEIVED,
       term: term
     });

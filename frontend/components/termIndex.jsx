@@ -1,6 +1,7 @@
 var React = require('react'),
-    TermStore = require('./stores/term_store'),
-    ClientActions = require('./actions/client_actions');
+    TermStore = require('../stores/term_store'),
+    ClientActions = require('../actions/client_actions'),
+    TermIndexItem = require('./termIndexItem');
 
 var TermIndex = React.createClass({
   getInitialState: function () {
@@ -21,16 +22,20 @@ var TermIndex = React.createClass({
   },
 
   render: function () {
+    // debugger
     return(
       <div className="term-index">
         <ul>
-          {
-            this.state.terms.map(function(term){
-              return (<TermIndexItem key={term.id} term={term}/>);
-            })
-          }
+        {
+          this.state.terms.map(function(term){
+            return (<TermIndexItem key={term.id} term={term}/>);
+          })
+        }
+
         </ul>
       </div>
     );
   }
 });
+
+module.exports = TermIndex;

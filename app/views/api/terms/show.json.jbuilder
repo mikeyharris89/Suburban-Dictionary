@@ -1,1 +1,1 @@
-json.extract! @term :name, :description, :sentence,
+json.extract! @term, :name, :description, :sentence, :id

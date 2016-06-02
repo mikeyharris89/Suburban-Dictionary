@@ -1,24 +1,24 @@
 var TermApiUtil = require('../util/term_api_util');
 
 var ClientActions = {
-  fetchPosts: function () {
-    TermApiUtil.fetchPosts();
+  fetchTerms: function () {
+    TermApiUtil.fetchTerms();
   },
 
-  getPost: function (id) {
-    TermApiUtil.getPost(id);
+  getTerm: function (id) {
+    TermApiUtil.getTerm(id);
   },
 
-  createPost: function (data) {
-    TermApiUtil.createPost(data);
+  createTerm: function (data) {
+    TermApiUtil.createTerm(data);
   },
 
-  editPost: function (data) {
-    TermApiUtil.updatePost(data);
+  editTerm: function (data) {
+    TermApiUtil.updateTerm(data);
   },
 
-  deletePost: function (id) {
-    TermApiUtil.deletePost(id);
+  deleteTerm: function (id) {
+    TermApiUtil.deleteTerm(id);
   }
 };
 

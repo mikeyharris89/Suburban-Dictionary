@@ -1,4 +1,4 @@
-class Api::TermsController < ApplicationContoller
+class Api::TermsController < ApplicationController
 
   def index
     @terms = Term.all

@@ -1,13 +1,14 @@
 var AppDispatcher = require('../dispatcher/dispatcher'),
     ClientActions = require('../actions/client_actions'),
-    TermConstants = require('../constants/term_actions'),
+    TermConstants = require('../constants/term_constants'),
     Store = require('flux/utils').Store;
 
-var TermStore = new Store();
+var TermStore = new Store(AppDispatcher);
 
 var _terms = {};
 
 TermStore.all = function() {
+
   var terms = [];
   Object.keys(_terms).forEach(function(key){
     terms.push(_terms[key]);
@@ -20,9 +21,11 @@ TermStore.find = function(id) {
 };
 
 var resetTerms = function(terms) {
+  _terms = {};
   terms.forEach(function(term) {
     _terms[term.id] = term;
   });
+
 };
 
 var setTerm = function(term){

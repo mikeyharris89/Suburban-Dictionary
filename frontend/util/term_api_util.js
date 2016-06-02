@@ -1,4 +1,4 @@
-var TermActions = require('../actions/server_actions');
+var TermActions = require('../actions/term_actions');
 
 var TermApiUtil = {
   fetchTerms: function () {

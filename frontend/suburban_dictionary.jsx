@@ -11,6 +11,7 @@ var App = require('./components/app');
 var TermIndex = require('./components/termIndex');
 
 
+
 var router = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>

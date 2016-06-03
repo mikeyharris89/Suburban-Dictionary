@@ -1,17 +1,16 @@
 
 var React = require('react');
-var TermStore = require('../stores/TermStore.js');
-var ClientActions = require('../actions/clientActions.js');
+var TermStore = require('../stores/term_store.js');
+var ClientActions = require('../actions/client_actions.js');
 var Link = require('react-router').Link;
 var TermIndexItem = require('./termIndexItem');
 
-var likeNameIndex= React.createClass({
+var LikeNameIndex = React.createClass({
   getInitialState: function() {
     return ( {terms: [] });
   },
 
   componentDidMount: function() {
-
     this.termListener = TermStore.addListener(this.handleChange);
     ClientActions.fetchLikeNameTerms(this.props.name);
   },
@@ -41,4 +40,4 @@ var likeNameIndex= React.createClass({
   }
 });
 
-module.exports = TermShow;
+module.exports = LikeNameIndex;

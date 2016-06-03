@@ -31,6 +31,7 @@ var App = React.createClass({
   },
 
   greeting: function(){
+    debugger
     if (SessionStore.isUserLoggedIn()) {
     	return (
     		<hgroup>
@@ -70,11 +71,11 @@ var App = React.createClass({
             </div>
             <div className="right-search">
               <ul className="nav-buttons">
-                <button onClick={ this.openForm}>Add Term</button>
-              </ul>
+                <button onClick={ this.openForm}>Add Term</button>              </ul>
             </div>
           </nav>
         </header>
+        {this.greeting()}
         <div className="column">
           {this.props.children}
         </div>

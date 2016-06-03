@@ -10,12 +10,17 @@ var TermApiUtil = {
     });
   },
   fetchLikeNameTerms: function(name) {
+    debugger
     $.ajax({
-      url: "api/terms",
+      url: "api/like_names",
       type: "GET",
-      data: {term: data},
+      data: {name: name},
       success: function (terms) {
+        debugger
         TermActions.receiveAllTerms(terms);
+      },
+      error: function() {
+        console.log("uh-ohhhhh");
       }
     });
   },

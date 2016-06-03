@@ -9,6 +9,8 @@ var hashHistory = ReactRouter.hashHistory;
 var LoginForm = require('./components/loginForm');
 var App = require('./components/app');
 var TermIndex = require('./components/termIndex');
+var TermShow = require('./components/termShow');
+
 
 
 
@@ -18,6 +20,7 @@ var router = (
       <IndexRoute component={ TermIndex } />
       <Route path="login" component={ LoginForm } />
       <Route path="signup" component={ LoginForm } />
+      <Route path="terms/:termId" component={ TermShow} />
     </Route>
   </Router>
 );

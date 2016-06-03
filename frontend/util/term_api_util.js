@@ -22,7 +22,7 @@ var TermApiUtil = {
 
   createTerm: function (data) {
     $.ajax({
-      url: "api/term",
+      url: "api/terms",
       type: "POST",
       data: {term: data},
       success: function (term) {
@@ -47,7 +47,7 @@ var TermApiUtil = {
       url: "api/terms/" + id,
       type: 'DELETE',
       success: function (term) {
-        TermActions.receiveSingleTerm(term);
+        TermActions.removeTerm(term);
       }
     });
   },

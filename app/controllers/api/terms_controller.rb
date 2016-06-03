@@ -6,7 +6,6 @@ class Api::TermsController < ApplicationController
 
   def create
     @term = Term.new(term_params)
-
     if @term.save
       render :show
     else
@@ -37,6 +36,6 @@ class Api::TermsController < ApplicationController
 
   private
   def term_params
-    params.require(:term).permit(:name, :definition, :sentence)
+    params.require(:term).permit(:name, :definition, :sentence, :user_id)
   end
 end

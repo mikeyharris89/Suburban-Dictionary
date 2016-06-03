@@ -1,1 +1,2 @@
-json.username @user.username 
+json.username @user.username
+json.id @user.id 

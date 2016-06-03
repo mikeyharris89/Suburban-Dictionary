@@ -19,12 +19,7 @@ Term.create!(
   sentence: "Ugh, how come your curfew is 10. Nerd",
   user_id: 1
   )
-Term.create!(
-  name: "Maria",
-  definition: "She raised our childen and is a dear family member, but we're still voting for Trump",
-  sentence: "Maria I'll be home at 10, make whatever for dinner",
-  user_id: 2
-  )
+  
 Term.create!(
   name: "Minivan",
   definition: "The vessel in which we drive our 2 kids around.",

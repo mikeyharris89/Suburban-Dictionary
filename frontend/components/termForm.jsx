@@ -36,12 +36,13 @@ var TermForm = React.createClass({
       name: this.state.name,
       definition: this.state.definition,
       sentence: this.state.sentence,
-      user_id: SessionStore.currentUser.id
+      user_id: SessionStore.currentUser().id
     };
 
     ClientActions.createTerm(data);
     this.setState({ name: "", definition: "", sentence: ""});
-    this.context.router.push("/");
+    this.props.close();
+    // this.context.router.push("/");
   },
 
   // stopProp: function(e){
@@ -55,7 +56,9 @@ var TermForm = React.createClass({
     }
     return(
       <div className={ modalType + " modal-screen"}>
-        <h3>NEW FORM</h3>
+        <div className="modal-header">
+          <span className="modal-title">NEW WORD</span>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <div className="modal-content">
             <div className="help-block">All the definitions on
@@ -64,7 +67,12 @@ var TermForm = React.createClass({
               add your own! Add your classic, white-washed suburban terms.
             </div>
 
-            <input className="term-name" placeholder="Word"></input>
+            <input
+            className="term-name input-box"
+            placeholder="Word"
+            value={this.state.name}
+            onChange={this.nameChange}
+            />
             <div className="help-block">
               <b>Write for a large audience. </b>
               Everyone and their mother will be reading this, so provide some
@@ -75,18 +83,23 @@ var TermForm = React.createClass({
               but let's try to be SFW.
             </div>
             <input
-              className= "term-definition"
+              className= "term-definition input-box"
               placeholder="Type your definition here..."
+              value={this.state.definition}
+              onChange={this.definitionChange}
               />
             <input
-            className= "term-sentence"
+            className= "term-sentence input-box"
             placeholder="Type an example of how it's used in a sentence..."
+            value={this.state.sentence}
+            onChange={this.sentenceChange}
             />
             <div className= "disclaimer">Definitions are subject to our terms of
             service and privacy policay.</div>
           </div>
+          <button className="submit" type="submit">Submit!</button>
         </form>
-        <a onClick={this.handleClick} className="close-modal">X</a>
+        <a onClick={this.handleClick} className="close-modal">x</a>
       </div>
     );
   }

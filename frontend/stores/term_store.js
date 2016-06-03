@@ -37,14 +37,15 @@ var removeTerm = function(term){
 };
 
 TermStore.__onDispatch = function(payload) {
+
   switch(payload.actionType){
-    case(TermConstants.TERMS_RECEIVED):
+    case(TermConstants.RECEIVED_TERMS):
       resetTerms(payload.terms);
       break;
-    case(TermConstants.TERM_RECEIVED):
+    case(TermConstants.RECEIVED_TERM):
       setTerm(payload.term);
       break;
-    case(TermConstants.TERM_REMOVED):
+    case(TermConstants.REMOVED_TERM):
       removeTerm(payload.term);
       break;
   }

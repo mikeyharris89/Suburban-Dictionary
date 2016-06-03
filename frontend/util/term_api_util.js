@@ -9,7 +9,16 @@ var TermApiUtil = {
       }
     });
   },
-
+  fetchLikeNameTerms: function(name) {
+    $.ajax({
+      url: "api/terms",
+      type: "GET",
+      data: {term: data},
+      success: function (terms) {
+        TermActions.receiveAllTerms(terms);
+      }
+    });
+  },
   getTerm: function (id) {
     $.ajax({
       url: "api/terms/" + id,

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :terms, only: [:create, :show, :index, :update, :destroy]
   end
+  get 'api_like_names', to: 'api/sessions#like_name_index'
 
 end

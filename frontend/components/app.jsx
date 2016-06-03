@@ -22,6 +22,14 @@ var App = React.createClass({
     this.setState({ hiddenForm:  true });
   },
 
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  clickHome: function() {
+    this.context.router.push("/");
+  },
+
   greeting: function(){
     if (SessionStore.isUserLoggedIn()) {
     	return (
@@ -40,17 +48,37 @@ var App = React.createClass({
       );
     }
   },
+  // { this.greeting() }
 
   render: function() {
     return (
       <div>
-        <header className= "suburban-top-bar">
-          <h1>Suburban <br/> Dictionary</h1>
-          { this.greeting() }
+        <header className="suburban-top-bar group">
+          <nav className="top-bar group">
+            <ul className="logo">
+              <li onClick={this.clickHome}>Suburban <br/> Dictionary</li>
+            </ul>
+            <ul className="main-nav">
+              <li>Browse</li>
+              <li>Favorites</li>
+              <li>Magic</li>
+            </ul>
+          </nav>
+          <nav className="bottom-bar group">
+            <div className="main-search">
+              <input className="search-bar" placeholder="Type any word here..."/>
+            </div>
+            <div className="right-search">
+              <ul className="nav-buttons">
+                <button onClick={ this.openForm}>Add Term</button>
+              </ul>
+            </div>
+          </nav>
         </header>
-        <button onClick={ this.openForm}>Add Term</button>
+        <div className="column">
+          {this.props.children}
+        </div>
         <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
-        {this.props.children}
       </div>
     );
   }

@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body, section, article, h1, h2, p, strong, em, a, button, input, {
+html, nav, body, section, article, ul, li, h1, h2, p, strong, em, a, button, input {
   margin: 0;
   border: 0;
   padding: 0;
@@ -25,6 +25,7 @@ html, body, section, article, h1, h2, p, strong, em, a, button, input, {
   text-align: inherit;
   color: inherit;
   background: transparent;
+  list-style-type: none;
 }
 
 /*input .username {
@@ -125,11 +126,17 @@ h1:hover {
   color: #333333;
   box-shadow: 1px 1px 2px #DBDBDB;
   word-wrap: break-word;
+  width: 556px;
 }
 .group:after {
   content: "";
   display: block;
   clear: both;
+}
+.column {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .content {
 vertical-align: top;
@@ -196,9 +203,6 @@ background-color: #EFFF00;
   word-wrap: break-word;
 }
 
-.suburban-top-bar {
-  background-color: #1D2439;
-}
 .logout {
   width: 150px;
   margin-bottom: 15px;
@@ -310,4 +314,64 @@ background-color: #EFFF00;
   font-style: italic;
   line-height: 22px;
   text align: center;
+}
+
+.suburban-top-bar {
+  background-color: #1D2439;
+  position: relative;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header {
+}
+.search-bar {
+  position: relative;
+  float: left;
+  margin-bottom: 9.6px;
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  height: 34px;
+  border-radius: 2px;
+}
+.top-bar {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.bottom-bar {
+  display: block;
+}
+nav {
+  margin-left: auto;
+  margin-right: auto;
+  width: 950px;
+}
+.logo {
+  float: left;
+  color: white;
+}
+.logo:hover {
+  cursor: pointer;
+  color: #EFFF00
+}
+.main-nav {
+  float: left;
+}
+.main-nav > li {
+  float: left;
+  color: white;
+  padding-left: 16.5px;
+  padding-right: 16.5px;
+}
+.main-nav > li:hover {
+  cursor: pointer;
+  color: #EFFF00
+}
+
+.nav-buttons {
+  float: right;
 }

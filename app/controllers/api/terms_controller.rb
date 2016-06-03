@@ -4,6 +4,11 @@ class Api::TermsController < ApplicationController
     @terms = Term.all
   end
 
+  def like_name_index
+    @terms = Term.all.where(name: name.upcase).or(name: name.downcase)
+    render :index
+  end
+
   def create
     @term = Term.new(term_params)
     if @term.save

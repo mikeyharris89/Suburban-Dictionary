@@ -20,6 +20,11 @@ var TermShow = React.createClass({
     this.termListener.remove();
   },
 
+  componentWillReceiveProps: function(newProps) {
+    var term = TermStore.find(newProps.params.termId);
+    this.setState({ term: term });
+  },
+
   handleChange: function () {
     var potentialTerm = TermStore.find(this.props.params.termId);
     this.setState({ term: potentialTerm ? potentialTerm : {} });

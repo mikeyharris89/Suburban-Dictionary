@@ -8,11 +8,9 @@ class Api::TermsController < ApplicationController
     term = Term.find(params[:id])
     id = params[:id]
     if term
-      @terms = Term.all
-      .where(name: [term.name.capitalize, term.name.downcase, term.name.upcase])
-      .where.not(id: term.id)
+      @terms = Term.where('lower(name) = ?', term.name.downcase)
     end
-    # @terms = Term.all.where(name: name.upcase).or(name: name.downcase)
+
     render :index
   end
 
@@ -40,7 +38,7 @@ class Api::TermsController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     @term = Term.find(params[:id])
     @term.destroy
     render :show

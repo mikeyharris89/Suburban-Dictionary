@@ -22,6 +22,7 @@ var TermApiUtil = {
       }
     });
   },
+
   getTerm: function (id) {
     $.ajax({
       url: "api/terms/" + id,
@@ -54,7 +55,7 @@ var TermApiUtil = {
     });
   },
 
-  destroyTerm: function (id) {
+  deleteTerm: function (id) {
     $.ajax({
       url: "api/terms/" + id,
       type: 'DELETE',

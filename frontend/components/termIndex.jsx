@@ -2,7 +2,7 @@ var React = require('react'),
     TermStore = require('../stores/term_store'),
     ClientActions = require('../actions/client_actions'),
     TermIndexItem = require('./termIndexItem');
-    
+
 
 var TermIndex = React.createClass({
   getInitialState: function () {
@@ -22,15 +22,15 @@ var TermIndex = React.createClass({
     this.setState({ terms: TermStore.all()});
   },
 
+
   render: function () {
-    // debugger
     return(
       <div className="content">
 
         <ul>
 
         {
-          this.state.terms.map(function(term){
+          this.state.terms.reverse().map(function(term){
             return (<TermIndexItem key={term.id} term={term}/>);
           })
         }

@@ -14,8 +14,17 @@ TermStore.all = function() {
   Object.keys(_terms).forEach(function(key){
     terms.push(_terms[key]);
   });
-  debugger
   return terms;
+};
+
+TermStore.likeNames = function(id){
+  var likeNames = [];
+  Object.keys(_terms).forEach(function(key){
+    if (_terms[key].id !== id){
+      likeNames.push(_terms[key]);
+    }
+  });
+  return likeNames;
 };
 
 TermStore.find = function(id) {
@@ -35,7 +44,9 @@ var setTerm = function(term){
 };
 
 var removeTerm = function(term){
+  debugger
   delete _terms[term.id];
+  debugger
 };
 
 TermStore.__onDispatch = function(payload) {
@@ -47,11 +58,14 @@ TermStore.__onDispatch = function(payload) {
     case(TermConstants.RECEIVED_TERM):
       setTerm(payload.term);
       break;
+
     case(TermConstants.REMOVED_TERM):
       removeTerm(payload.term);
       break;
   }
   this.__emitChange();
+
 };
 
+window.TermStore = TermStore;
 module.exports = TermStore;

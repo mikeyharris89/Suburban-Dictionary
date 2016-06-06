@@ -11,17 +11,24 @@ var LikeNameIndex = React.createClass({
   },
 
   componentDidMount: function() {
-    debugger
     this.termListener = TermStore.addListener(this.handleChange);
-    ClientActions.fetchLikeNameTerms(this.props.id);
+    if (this.props.id){
+      ClientActions.fetchLikeNameTerms(this.props.id);
+    }
   },
 
   componentWillUnmount: function() {
     this.termListener.remove();
   },
 
+  componentWillReceiveProps: function(newProps){
+    if (newProps.id && newProps.id !== this.props.id) {
+      ClientActions.fetchLikeNameTerms(newProps.id);
+    }
+  },
+
   handleChange: function () {
-    this.setState( {terms: TermStore.all()});
+    this.setState( {terms: TermStore.likeNames(this.props.id)});
   },
 
   render: function () {

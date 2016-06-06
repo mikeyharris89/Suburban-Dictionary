@@ -1,21 +1,36 @@
 var React = require('react'),
     Link = require('react-router').Link,
     ClientActions = require('../actions/client_actions'),
-    hashHistory = require('react-router').hashHistory;
+    hashHistory = require('react-router').hashHistory,
+    SessionStore = require('../stores/session_store');
 
 var TermIndexItem = React.createClass({
-  editPost: function (e) {
+  editTerm: function (e) {
     e.preventDefault();
     var url = "/terms/" + this.props.term.id + "/edit";
     hashHistory.push(url);
   },
 
-  deletePost: function(e) {
-    e.preventDefaults();
+  deleteTerm: function(e) {
+    e.preventDefault();
     ClientActions.deleteTerm(this.props.term.id);
+    hashHistory.push("/");
+  },
+
+  handleClick: function(e) {
+    e.preventDefault();
+
   },
 
   render: function() {
+    var buttons = "";
+    if (parseInt(this.props.term.user_id) === SessionStore.currentUser().id) {
+      buttons =
+      <div className= "group button-bar">
+        <button className="term-change" onClick={this.editTerm}>Edit</button>
+        <button className="term-change" onClick={this.deleteTerm}>Delete</button>
+      </div>;
+    }
     return (
       <div className="def-panel">
         <div>
@@ -25,13 +40,14 @@ var TermIndexItem = React.createClass({
         <div className="definition">{this.props.term.definition}</div>
         <div className="sentence">{this.props.term.sentence}</div>
         <div className="contributor">by
-            <a className="term_author">{this.props.term.username}</a>
+            <Link to={"/users/" + this.props.term.user_id} className="term_author">
+              {this.props.term.username}
+            </Link>
             {this.props.term.date_string}
         </div>
-        <div className= "group button-bar">
-          <button className="term-change" onClick={this.editTerm}>Edit</button>&nbsp;
-          <button className="term-change" onClick={this.deleteTerm}>Delete</button>
-        </div>
+
+        {buttons}
+
       </div>
     );
   }

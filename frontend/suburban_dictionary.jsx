@@ -10,17 +10,22 @@ var LoginForm = require('./components/loginForm');
 var App = require('./components/app');
 var TermIndex = require('./components/termIndex');
 var TermShow = require('./components/termShow');
+var UserShow = require('./components/userShow');
 
 
 
+var _scrollToTop = function() {
+  window.scrollTo(0,0);
+};
 
 var router = (
-  <Router history={hashHistory}>
+  <Router history={hashHistory} onUpdate={_scrollToTop}>
     <Route path="/" component={App}>
       <IndexRoute component={ TermIndex } />
       <Route path="login" component={ LoginForm } />
       <Route path="signup" component={ LoginForm } />
       <Route path="terms/:termId" component={ TermShow} />
+      <Route path="users/:userId" component={ UserShow} />
     </Route>
   </Router>
 );

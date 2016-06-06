@@ -31,7 +31,6 @@ var App = React.createClass({
   },
 
   greeting: function(){
-    debugger
     if (SessionStore.isUserLoggedIn()) {
     	return (
     		<hgroup>

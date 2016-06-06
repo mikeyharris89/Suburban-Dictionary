@@ -1,5 +1,5 @@
 var React = require('react');
-var TermStore = require('../stores/term_store.js');
+var SessionStore = require('../stores/session_store.js');
 var ClientActions = require('../actions/client_actions.js');
 var Link = require('react-router').Link;
 var TermIndexItem = require('./termIndexItem');
@@ -30,7 +30,7 @@ var TermShow = React.createClass({
     return (
       <div className="content">
         <TermIndexItem key={term.id} term={term}/>
-        <LikeNameIndex name={term.name} id={term.id}/>
+        <LikeNameIndex name={term.name}/>
       </div>
 
     );

@@ -10,9 +10,11 @@ var _terms = {};
 TermStore.all = function() {
 
   var terms = [];
+
   Object.keys(_terms).forEach(function(key){
     terms.push(_terms[key]);
   });
+  debugger
   return terms;
 };
 

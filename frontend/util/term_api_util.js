@@ -9,14 +9,12 @@ var TermApiUtil = {
       }
     });
   },
-  fetchLikeNameTerms: function(name) {
-    debugger
+  fetchLikeNameTerms: function(id) {
     $.ajax({
       url: "api/like_names",
       type: "GET",
-      data: {name: name},
+      data: {id: id},
       success: function (terms) {
-        debugger
         TermActions.receiveAllTerms(terms);
       },
       error: function() {

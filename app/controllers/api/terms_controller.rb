@@ -5,11 +5,15 @@ class Api::TermsController < ApplicationController
   end
 
   def like_name_index
-    name = params[:name]
-    @terms = Term.all.where(name: name)
+    term = Term.find(params[:id])
+    id = params[:id]
+    if term
+      @terms = Term.all
+      .where(name: [term.name.capitalize, term.name.downcase, term.name.upcase])
+      .where.not(id: term.id)
+    end
     # @terms = Term.all.where(name: name.upcase).or(name: name.downcase)
     render :index
-    
   end
 
   def create

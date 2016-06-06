@@ -4,8 +4,8 @@ var ClientActions = {
   fetchTerms: function () {
     TermApiUtil.fetchTerms();
   },
-  fetchLikeNameTerms: function(name) {
-    TermApiUtil.fetchLikeNameTerms(name);
+  fetchLikeNameTerms: function(id) {
+    TermApiUtil.fetchLikeNameTerms(id);
   },
 
   getTerm: function (id) {

@@ -7,7 +7,7 @@ var SearchApiUtil = {
       data: {input: input},
       success: function (terms) {
         SearchActions.receiveTerms(terms);
-      }
+      },
     });
   }
 };

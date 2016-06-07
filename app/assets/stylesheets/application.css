@@ -348,15 +348,16 @@ background-color: #EFFF00;
 .header {
 }
 .search-bar {
+  display: block;
   position: relative;
   float: left;
   margin-bottom: 9.6px;
+  width: 747px;
   padding-left: 15px;
   padding-top: 8px;
   padding-right: 8px;
   padding-bottom: 8px;
   height: 34px;
-  width: 500px;
   border-radius: 2px;
 }
 .top-bar {
@@ -396,4 +397,35 @@ nav {
 
 .nav-buttons {
   float: right;
+}
+
+.search-result{
+  position: absolute;
+  top: 120px;
+  color: #1769ac;
+  background: white;
+  height: auto;
+  width: 770px;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #e3e3e3;
+  box-shadow: 1px 1px 2px #DBDBDB;
+  z-index: 2;
+  /*display: none;*/
+}
+.search-bar:focus ul{
+  background: red;
+  display: block;
+}
+.search-result > li{
+  display: hidden;
+  padding: 8px;
+  padding-left: 15px;
+}
+.search-result-item:hover {
+  font-weight: bold;
+  background: #05ff56;
+}
+.search-result:focus {
+
 }

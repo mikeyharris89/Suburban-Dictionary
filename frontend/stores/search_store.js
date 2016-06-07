@@ -37,9 +37,9 @@ var resetTerms = function(terms) {
 
 };
 
-TermStore.__onDispatch = function(payload) {
+SearchStore.__onDispatch = function(payload) {
   switch(payload.actionType){
-    case(SearchConstants.RECEIVED_TERMS):
+    case(SearchConstants.RECEIVED_SEARCH_TERMS):
       resetTerms(payload.terms);
       break;
   }

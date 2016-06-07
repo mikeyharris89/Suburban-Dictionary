@@ -26,7 +26,6 @@ var TermForm = React.createClass({
   },
 
   handleClick: function(e) {
-
     this.props.close();
     // this.context.router.push("/");
   },

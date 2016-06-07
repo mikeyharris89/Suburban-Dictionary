@@ -4,7 +4,7 @@ var SearchConstants = require('../constants/search_constants');
 var SearchActions = {
   receiveTerms: function (terms) {
     AppDispatcher.dispatch({
-      actionType: SearchConstants.RECEIVED_TERMS,
+      actionType: SearchConstants.RECEIVED_SEARCH_TERMS,
       terms: terms
     });
   },

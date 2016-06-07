@@ -4,15 +4,19 @@ var React = require('react'),
   ClientActions = require('../actions/client_actions'),
   ReactRouter = require('react-router');
 
-var TermForm = React.createClass({
+var EditForm = React.createClass({
   getInitialState: function() {
-    return({ name: "", definition: "", sentence: ""});
+    return({
+      name: this.props.term.name,
+      definition: this.props.term.definition,
+      sentence: this.props.term.sentence
+    });
   },
+
 
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-
   nameChange: function (e) {
     this.setState( { name: e.target.value} );
   },
@@ -36,10 +40,11 @@ var TermForm = React.createClass({
       name: this.state.name,
       definition: this.state.definition,
       sentence: this.state.sentence,
-      user_id: SessionStore.currentUser().id
+      user_id: SessionStore.currentUser().id,
+      id: this.props.term.id
     };
 
-    ClientActions.createTerm(data);
+    ClientActions.editTerm(data);
     this.setState({ name: "", definition: "", sentence: ""});
     this.props.close();
     // this.context.router.push("/");
@@ -52,18 +57,18 @@ var TermForm = React.createClass({
   render: function() {
     var modalType = "modal";
     if (!this.props.hidden){
-      modalType = "modal-is-active ";
+      modalType = "modal-is-active";
     }
     return(
-      <div className={ modalType + " modal-screen group"}>
+      <div className={ modalType + " modal-screen"}>
         <div className="modal-header">
-          <span className="modal-title">NEW WORD</span>
+          <span className="modal-title">EDIT WORD</span>
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="modal-content">
             <div className="help-block">All the definitions on
               <b> Suburban Dictionary </b>
-              were written by people just like you. Now's your chance to
+              were written by people just like you. Nows your chance to
               add your own! Add your classic, white-washed suburban terms.
             </div>
 
@@ -105,4 +110,4 @@ var TermForm = React.createClass({
   }
 });
 
-module.exports = TermForm;
+module.exports = EditForm;

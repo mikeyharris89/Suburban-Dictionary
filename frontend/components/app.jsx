@@ -70,15 +70,16 @@ var App = React.createClass({
             </div>
             <div className="right-search">
               <ul className="nav-buttons">
-                <button onClick={ this.openForm}>Add Term</button>              </ul>
+                <button onClick={ this.openForm}>Add Term</button>
+              </ul>
             </div>
           </nav>
         </header>
         {this.greeting()}
         <div className="column">
+          <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
           {this.props.children}
         </div>
-        <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
       </div>
     );
   }

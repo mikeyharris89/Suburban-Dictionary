@@ -19,7 +19,7 @@ var TermActions = {
 
   removeTerm: function (term) {
     AppDispatcher.dispatch({
-      actionType: TermConstants.RECEIVED_TERM,
+      actionType: TermConstants.REMOVED_TERM,
       term: term
     });
   }

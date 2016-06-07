@@ -27,7 +27,7 @@ var LoginForm = React.createClass({
 
   componentDidMount: function () {
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
-    this.errorListener = ErrorStore.addListener(this.redirectIfLoggedIn);
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
   },
 
   componentWillUnmount: function () {
@@ -86,8 +86,9 @@ var LoginForm = React.createClass({
           <b> post new definitions, images, and sounds </b>
           and create lists of favorites
         </p>
-        <p> </p>
-        { this.fieldErrors("base") }
+        <p className="errors">
+        { this.fieldErrors("errors") }
+      </p>
 
         <br />
 

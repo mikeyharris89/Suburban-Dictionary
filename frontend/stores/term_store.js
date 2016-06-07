@@ -44,9 +44,7 @@ var setTerm = function(term){
 };
 
 var removeTerm = function(term){
-  debugger
   delete _terms[term.id];
-  debugger
 };
 
 TermStore.__onDispatch = function(payload) {

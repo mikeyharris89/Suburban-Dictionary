@@ -2,13 +2,20 @@ var React = require('react'),
     Link = require('react-router').Link,
     ClientActions = require('../actions/client_actions'),
     hashHistory = require('react-router').hashHistory,
-    SessionStore = require('../stores/session_store');
+    SessionStore = require('../stores/session_store'),
+    EditForm = require('./termEdit');
 
 var TermIndexItem = React.createClass({
-  editTerm: function (e) {
-    e.preventDefault();
-    var url = "/terms/" + this.props.term.id + "/edit";
-    hashHistory.push(url);
+  getInitialState: function() {
+    return { hiddenEdit: true };
+  },
+
+  openEdit: function () {
+    this.setState({ hiddenEdit: false });
+  },
+
+  closeEdit: function () {
+    this.setState({ hiddenEdit:  true });
   },
 
   deleteTerm: function(e) {
@@ -27,7 +34,7 @@ var TermIndexItem = React.createClass({
     if (parseInt(this.props.term.user_id) === SessionStore.currentUser().id) {
       buttons =
       <div className= "group button-bar">
-        <button className="term-change" onClick={this.editTerm}>Edit</button>
+        <button className="term-change" onClick={this.openEdit}>Edit</button>
         <button className="term-change" onClick={this.deleteTerm}>Delete</button>
       </div>;
     }
@@ -47,7 +54,7 @@ var TermIndexItem = React.createClass({
         </div>
 
         {buttons}
-
+        <EditForm hidden={this.state.hiddenEdit} close={this.closeEdit} term={this.props.term}/>
       </div>
     );
   }

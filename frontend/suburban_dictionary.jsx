@@ -19,13 +19,13 @@ var _scrollToTop = function() {
 };
 
 var router = (
-  <Router history={hashHistory} onUpdate={_scrollToTop}>
+  <Router history={hashHistory} onUpdate={ _scrollToTop }>
     <Route path="/" component={App}>
       <IndexRoute component={ TermIndex } />
       <Route path="login" component={ LoginForm } />
       <Route path="signup" component={ LoginForm } />
-      <Route path="terms/:termId" component={ TermShow} />
-      <Route path="users/:userId" component={ UserShow} />
+      <Route path="terms/:termId" component={ TermShow } />
+      <Route path="users/:userId" component={ UserShow } />
     </Route>
   </Router>
 );

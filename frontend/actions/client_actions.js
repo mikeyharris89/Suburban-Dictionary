@@ -1,4 +1,5 @@
-var TermApiUtil = require('../util/term_api_util');
+var TermApiUtil = require('../util/term_api_util'),
+    SearchApiUtil = require('../util/search_api_util');
 
 var ClientActions = {
   fetchTerms: function () {
@@ -22,6 +23,10 @@ var ClientActions = {
 
   deleteTerm: function (id) {
     TermApiUtil.deleteTerm(id);
+  },
+
+  fetchSearchTerms: function(input) {
+    SearchApiUtil.fetchTerms(input);
   }
 };
 

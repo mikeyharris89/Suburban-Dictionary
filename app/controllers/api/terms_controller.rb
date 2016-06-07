@@ -1,14 +1,14 @@
 class Api::TermsController < ApplicationController
 
   def index
-    @terms = Term.all
+    @terms = Term.order(created_at: :desc).includes(:user)
   end
 
   def like_name_index
     term = Term.find(params[:id])
     id = params[:id]
     if term
-      @terms = Term.where('lower(name) = ?', term.name.downcase)
+      @terms = Term.where('lower(name) = ?', term.name.downcase).includes(:user)
     end
 
     render :index

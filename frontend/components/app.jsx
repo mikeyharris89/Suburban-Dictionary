@@ -3,6 +3,7 @@ var Link = require('react-router').Link;
 var SessionStore = require('../stores/session_store');
 var SessionApiUtil = require('../util/session_api_util');
 var TermForm = require('./termForm');
+var SearchBar = require('./searchBar');
 
 var App = React.createClass({
   getInitialState: function() {
@@ -51,6 +52,7 @@ var App = React.createClass({
   // { this.greeting() }
 
   render: function() {
+    // <input className="search-bar" placeholder="Type any word here..."/>
     return (
       <div>
         <header className="suburban-top-bar group">
@@ -66,7 +68,7 @@ var App = React.createClass({
           </nav>
           <nav className="bottom-bar group">
             <div className="main-search">
-              <input className="search-bar" placeholder="Type any word here..."/>
+              <SearchBar/>
             </div>
             <div className="right-search">
               <ul className="nav-buttons">
@@ -76,10 +78,9 @@ var App = React.createClass({
           </nav>
         </header>
         {this.greeting()}
-        <div className="column">
-          <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
-          {this.props.children}
-        </div>
+        {this.props.children}
+
+        <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
       </div>
     );
   }

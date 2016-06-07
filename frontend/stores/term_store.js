@@ -14,6 +14,9 @@ TermStore.all = function() {
   Object.keys(_terms).forEach(function(key){
     terms.push(_terms[key]);
   });
+  terms.sort(function(a,b) {
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
   return terms;
 };
 

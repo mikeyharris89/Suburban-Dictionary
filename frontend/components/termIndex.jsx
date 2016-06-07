@@ -24,6 +24,7 @@ var TermIndex = React.createClass({
 
 
   render: function () {
+    debugger
     var welcome = "Welcome to Suburban Dictionary:\
      Your favoite place to be as raunchy as possible.\
      And by raunchy we mean, clean and whitewashed. Just like the suburbs!\
@@ -36,7 +37,7 @@ var TermIndex = React.createClass({
 
         <ul className="index-terms">
         {
-          this.state.terms.reverse().map(function(term){
+          this.state.terms.map(function(term){
             return (<TermIndexItem key={term.id} term={term}/>);
           })
         }

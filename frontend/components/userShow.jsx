@@ -55,13 +55,15 @@ var UserShow = React.createClass({
     }
 
     return (
-      <div>
+      <div className="content group">
       {heading}
+        <ul className="index-terms">
         {
           this.state.terms.map(function(term){
             return (<TermIndexItem key={term.id} term={term}/>);
           })
         }
+        </ul>
       </div>
 
     );

@@ -23,6 +23,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'uuidtools'
+
+gem "paperclip", '5.0.0.beta1'
+gem 'figaro'
+gem 'aws-sdk', '>= 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

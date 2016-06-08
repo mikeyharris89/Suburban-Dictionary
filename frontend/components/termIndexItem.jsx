@@ -46,8 +46,9 @@ var TermIndexItem = React.createClass({
         <Link to={"/terms/" + this.props.term.id} className="term-name">{this.props.term.name}</Link>&nbsp;
         <div className="definition">{this.props.term.definition}</div>
         <div className="sentence">{this.props.term.sentence}</div>
+        <img src={ this.props.term.image_url }/>
         <div className="contributor">by
-            <Link to={"/users/" + this.props.term.user_id} className="term_author">
+            <Link to={"/users/" + this.props.term.user_id} className="term-author">
               {this.props.term.username}
             </Link>
             {this.props.term.date_string}

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :search_terms, only: :index
   end
   get 'api/like_names', to: 'api/terms#like_name_index'
+  get 'auth/:provider/callback', to: 'api/sessions#omni_create'
 
 end

@@ -11,18 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601193248) do
+ActiveRecord::Schema.define(version: 20160608202912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "terms", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.text     "definition", null: false
-    t.text     "sentence",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",               null: false
+    t.text     "definition",         null: false
+    t.text     "sentence",           null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "terms", ["user_id"], name: "index_terms_on_user_id", using: :btree
@@ -30,9 +34,11 @@ ActiveRecord::Schema.define(version: 20160601193248) do
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "session_token",   null: false
-    t.string   "password_digest", null: false
+    t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "facebook_uid"
+    t.string   "google_uid"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree

@@ -46,6 +46,6 @@ class Api::TermsController < ApplicationController
 
   private
   def term_params
-    params.require(:term).permit(:name, :definition, :sentence, :user_id)
+    params.require(:term).permit(:name, :definition, :sentence, :user_id, :image)
   end
 end

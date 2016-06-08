@@ -179,6 +179,10 @@ padding-bottom: 10px;
   text-decoration: none;
   vertical-align: middle;
 }
+.term-author {
+  margin-left: 3px;
+  margin-right: 3px;
+},
 .definition {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -385,7 +389,9 @@ h3 {
   padding-bottom: 8px;
   height: 34px;
   border-radius: 2px;
+
 }
+
 .top-bar {
   display: block;
   margin-bottom: 8px;
@@ -468,6 +474,7 @@ nav {
 .search-bar:focus ul{
   background: red;
   display: block;
+  content: none;
 }
 .search-result > li{
   display: hidden;

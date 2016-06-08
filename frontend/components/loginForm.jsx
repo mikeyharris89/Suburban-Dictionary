@@ -121,6 +121,7 @@ var LoginForm = React.createClass({
         <br />
 				<button className="submit" type="submit">Submit!</button>
         <button className="submit" onClick={this.guestSignIn}>Sign in as Guest!</button>
+        <a href="auth/facebook">Sign In With Facebook</a>
 			</form>
 		);
 	}

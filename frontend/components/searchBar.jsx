@@ -71,7 +71,7 @@ var SearchBar = React.createClass({
 
     return (
     <div>
-      <input className="search-bar" onFocus= {this.showDropDown} onChange={this.handleInput} value={this.state.inputVal}/>
+      <input className="search-bar" placeholder="Type any word here..." onFocus= {this.showDropDown} onChange={this.handleInput} value={this.state.inputVal}/>
       <ul onBlur={this.blur} className="search-result" hidden={this.state.dropDown}>
         {results}
       </ul>

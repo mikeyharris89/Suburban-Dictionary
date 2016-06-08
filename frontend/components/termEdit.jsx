@@ -2,7 +2,8 @@ var React = require('react'),
   TermStore = require('../stores/term_store'),
   SessionStore = require('../stores/session_store'),
   ClientActions = require('../actions/client_actions'),
-  ReactRouter = require('react-router');
+  ReactRouter = require('react-router'),
+  ErrorStore = require('../stores/error_store');
 
 var EditForm = React.createClass({
   getInitialState: function() {
@@ -50,9 +51,16 @@ var EditForm = React.createClass({
     // this.context.router.push("/");
   },
 
-  // stopProp: function(e){
-  //   e.stopPropagation();
-  // },
+  fieldErrors: function (field) {
+    var errors = ErrorStore.formErrors(this.formType());
+    if (!errors[field]) { return; }
+
+    var messages = errors[field].map(function (errorMsg, i) {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul>{ messages }</ul>;
+  },
 
   render: function() {
     var modalType = "modal";

@@ -37,7 +37,9 @@ var TermApiUtil = {
     $.ajax({
       url: "api/terms",
       type: "POST",
-      data: {term: data},
+      contentType: false,
+      processData: false,
+      data: data,
       success: function (term) {
         TermActions.receiveSingleTerm(term);
       }

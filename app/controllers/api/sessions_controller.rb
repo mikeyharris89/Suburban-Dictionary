@@ -16,6 +16,12 @@ class Api::SessionsController < ApplicationController
     end
   end
 
+  def omni_create
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    login(@user)
+    redirect_to '/'
+  end
+
   def show
     if current_user
       @user = current_user
@@ -39,5 +45,9 @@ class Api::SessionsController < ApplicationController
 
   end
 
+  protected
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 
 end

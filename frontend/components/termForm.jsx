@@ -2,11 +2,18 @@ var React = require('react'),
   TermStore = require('../stores/term_store'),
   SessionStore = require('../stores/session_store'),
   ClientActions = require('../actions/client_actions'),
-  ReactRouter = require('react-router');
+  ReactRouter = require('react-router'),
+  ErrorStore = require('../stores/error_store');
 
 var TermForm = React.createClass({
   getInitialState: function() {
-    return({ name: "", definition: "", sentence: ""});
+    return({
+      name: "",
+      definition: "",
+      sentence: "",
+      imageFile: null,
+      imageUrl: null
+    });
   },
 
   contextTypes: {
@@ -25,28 +32,55 @@ var TermForm = React.createClass({
     this.setState( { sentence: e.target.value} );
   },
 
+  updateFile: function (e) {
+    var file = e.currentTarget.files[0];
+    var fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  },
+
   handleClick: function(e) {
     this.props.close();
     // this.context.router.push("/");
   },
 
-  handleSubmit: function(e) {
-    var data = {
-      name: this.state.name,
-      definition: this.state.definition,
-      sentence: this.state.sentence,
-      user_id: SessionStore.currentUser().id
-    };
+  fieldErrors: function (field) {
+    var errors = ErrorStore.formErrors(this.formType());
+    if (!errors[field]) { return; }
 
-    ClientActions.createTerm(data);
-    this.setState({ name: "", definition: "", sentence: ""});
-    this.props.close();
-    // this.context.router.push("/");
+    var messages = errors[field].map(function (errorMsg, i) {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul>{ messages }</ul>;
   },
 
-  // stopProp: function(e){
-  //   e.stopPropagation();
-  // },
+  handleSubmit: function(e) {
+    var formData = new FormData();
+    formData.append("term[name]", this.state.name);
+    formData.append("term[definition]", this.state.definition);
+    formData.append("term[sentence]", this.state.sentence);
+    formData.append("term[user_id]", SessionStore.currentUser().id);
+    formData.append("term[image]", this.state.imageFile);
+    ClientActions.createTerm(formData);
+
+    // var data = {
+    //   name: this.state.name,
+    //   definition: this.state.definition,
+    //   sentence: this.state.sentence,
+    //   user_id: SessionStore.currentUser().id
+    // };
+    //
+    // ClientActions.createTerm(data);
+    this.setState({ name: "", definition: "", sentence: "", imageFile: null});
+    this.props.close();
+  },
+
 
   render: function() {
     var modalType = "modal";
@@ -93,8 +127,10 @@ var TermForm = React.createClass({
             value={this.state.sentence}
             onChange={this.sentenceChange}
             />
+            <input type="file" onChange={this.updateFile}/>
             <div className= "disclaimer">Definitions are subject to our terms of
             service and privacy policay.</div>
+            <img src={this.state.imageUrl}/>
           </div>
           <button className="submit" type="submit">Submit!</button>
         </form>

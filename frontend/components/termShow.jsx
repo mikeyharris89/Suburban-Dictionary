@@ -7,11 +7,13 @@ var LikeNameIndex = require('./likeNameIndex');
 
 var TermShow = React.createClass({
   getInitialState: function () {
+    // debugger
     var potentialTerm = TermStore.find(this.props.params.termId);
     return ({term: potentialTerm ? potentialTerm : {}});
   },
 
   componentDidMount: function () {
+    // debugger
     this.termListener = TermStore.addListener(this.handleChange);
     ClientActions.getTerm(parseInt(this.props.params.termId));
   },
@@ -21,6 +23,7 @@ var TermShow = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
+    // debugger
     var term = TermStore.find(newProps.params.termId);
     this.setState({ term: term });
   },
@@ -31,7 +34,14 @@ var TermShow = React.createClass({
   },
 
   render: function () {
+
+    var result = "";
     var term = this.state.term;
+    // if (term) {
+    //   result = <LikeNameIndex name={term.name} id={term.id}/>;
+    //           <TermIndexItem key={term.id} term={term}/>;
+    // }
+
     return (
       <div className="content">
         <TermIndexItem key={term.id} term={term}/>

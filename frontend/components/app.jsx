@@ -16,11 +16,16 @@ var App = React.createClass({
   },
 
   openForm: function () {
+    if (!SessionStore.isUserLoggedIn()){
+      this.context.router.push("login/");
+    } else {
     this.setState({ hiddenForm:  false });
+    }
   },
 
   closeForm: function () {
     this.setState({ hiddenForm:  true });
+
   },
 
   contextTypes: {
@@ -30,7 +35,14 @@ var App = React.createClass({
   clickHome: function() {
     this.context.router.push("/");
   },
-
+  userSignIn: function() {
+    var path = "signup";
+    if (SessionStore.isUserLoggedIn()){
+      var userId = SessionStore.currentUser().id;
+      path = "users/" + userId;
+    }
+    this.context.router.push(path);
+  },
   greeting: function(){
     if (SessionStore.isUserLoggedIn()) {
     	return (
@@ -57,9 +69,11 @@ var App = React.createClass({
       <div>
         <header className="suburban-top-bar group">
           <nav className="top-bar group">
-            <ul className="logo">
-              <li onClick={this.clickHome}>Suburban <br/> Dictionary</li>
-            </ul>
+          <ul className= "header-logo">
+            <a href="/" className="logo">
+              <img src="assets/logo.png" alt=""/>
+            </a>
+          </ul>
             <ul className="main-nav">
               <li>Browse</li>
               <li>Favorites</li>
@@ -72,7 +86,17 @@ var App = React.createClass({
             </div>
             <div className="right-search">
               <ul className="nav-buttons">
-                <button onClick={ this.openForm}>Add Term</button>
+                <button onClick={ this.openForm}>
+                  <i className="fa fa-plus" aria-hidden="true"></i>
+                </button>
+
+                <button>
+                  <i className="fa fa-random" aria-hidden="true"></i>
+                </button>
+
+                <button onClick = { this.userSignIn }>
+                  <i className="fa fa-user" aria-hidden="true"></i>
+                </button>
               </ul>
             </div>
           </nav>

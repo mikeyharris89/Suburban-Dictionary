@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, nav, body, section, article, ul, li, h1, h2, p, strong, em, a, button, input {
+html, nav, body, section, article, ul, li, h1, h2, p, strong, em, a, button, input, img {
   margin: 0;
   border: 0;
   padding: 0;
@@ -73,6 +73,12 @@ input {
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 h1 {
@@ -351,8 +357,8 @@ background-color: #EFFF00;
   display: block;
   position: relative;
   float: left;
-  margin-bottom: 9.6px;
-  width: 747px;
+  /*margin-bottom: 9.6px;*/
+  width: 730px;
   padding-left: 15px;
   padding-top: 8px;
   padding-right: 8px;
@@ -373,13 +379,18 @@ nav {
   margin-right: auto;
   width: 950px;
 }
+.header-logo{
+  width: 300px;
+  background: white;
+}
 .logo {
   float: left;
   color: white;
+  background: white;
 }
 .logo:hover {
   cursor: pointer;
-  color: #EFFF00
+  background: #EFFF00
 }
 .main-nav {
   float: left;
@@ -397,8 +408,27 @@ nav {
 
 .nav-buttons {
   float: right;
+  color: white;
 }
 
+.nav-buttons > button {
+  border-radius: 50%;
+  background-size: auto;
+  margin-bottom: 12.5px;
+  margin-left: 10px;
+  padding-top: 13px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+}
+.nav-buttons > button:nth-child(2){
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.nav-buttons > button:hover {
+  color: #05ff56;
+}
 .search-result{
   position: absolute;
   top: 120px;

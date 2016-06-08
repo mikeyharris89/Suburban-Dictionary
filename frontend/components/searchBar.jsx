@@ -31,12 +31,6 @@ var SearchBar = React.createClass({
 
   },
 
-//   handleClick: function(e) {
-//     debugger
-//     e.preventDefault();
-//   //   if (!(e.t)
-// },
-
   matches: function() {
     matches = [];
 
@@ -61,7 +55,7 @@ var SearchBar = React.createClass({
 
     // var name = arguments[1];
     // this.setState({ inputVal: name} );
-    this.setState({inputVal: "", terms: []});
+    this.setState({inputVal: "", terms: [], hiddenDrop: true });
     ClientActions.fetchSearchTerms("");
     this.context.router.push("/terms/" + arguments[0]);
   },
@@ -69,7 +63,6 @@ var SearchBar = React.createClass({
   // </ReactCSSTransitionGroup>
 
   render: function() {
-    console.log(this.matches());
     var results = this.matches().map(function(match, i) {
       return (
         <li className="search-result-item" key={i} onClick={this.selectName.bind(this, match.id, match.name)}>{match.name}</li>
@@ -79,7 +72,7 @@ var SearchBar = React.createClass({
     return (
     <div>
       <input className="search-bar" onFocus= {this.showDropDown} onChange={this.handleInput} value={this.state.inputVal}/>
-      <ul className="search-result" hidden={this.state.dropDown}>
+      <ul onBlur={this.blur} className="search-result" hidden={this.state.dropDown}>
         {results}
       </ul>
     </div>

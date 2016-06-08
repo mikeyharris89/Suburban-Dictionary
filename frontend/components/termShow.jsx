@@ -24,8 +24,8 @@ var TermShow = React.createClass({
 
   componentWillReceiveProps: function(newProps) {
     // debugger
-    var term = TermStore.find(newProps.params.termId);
-    this.setState({ term: term });
+    ClientActions.getTerm(parseInt(newProps.params.termId));
+    // var term = TermStore.find(newProps.params.termId);
   },
 
   handleChange: function () {

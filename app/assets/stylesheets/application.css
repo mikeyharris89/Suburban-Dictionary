@@ -62,6 +62,7 @@ button {
   border-color: #000000;
   color: #FFFFFF;
   transition: background-color 300ms ease-out;
+  cursor: pointer;
 }
 
 input {
@@ -115,9 +116,7 @@ h1:hover {
   margin-top: 40px;
   background-color: #EFFF00;
   color: #000000;
-  width: calc(100% - 67px);
-  margin-left: auto;
-  margin-right: auto;
+  width: calc(100% - 22px);
   font-weight: bold;
   font-size: 24px;
 }
@@ -148,7 +147,7 @@ margin-left: auto;
 margin-right: auto;
 width: 960px;
 vertical-align: top;
-padding-top: 0;
+padding-top: 20px;
 padding-bottom: 10px;
 }
 
@@ -230,11 +229,32 @@ background-color: #EFFF00;
 }
 
 .logout {
-  width: 150px;
-  margin-bottom: 15px;
-  margin-left: 10px;
+  width: auto;
+  margin: 20px 0px;
+  font-size: 14px;
+  border-radius: 20%;
+  float: right;
+  padding-top: 20px;
 }
 
+.logout:hover {
+  color: #05ff56;
+}
+h3 {
+  border-bottom: 1px solid #134FE6;
+  color: #134FE6;
+
+}
+
+.heading {
+  float:left;
+  width: auto;
+  line-height: 88px;
+  color: #134FE6;
+}
+.login {
+  text-align: center;
+}
 .modal {
   display: none;
 }
@@ -377,7 +397,7 @@ background-color: #EFFF00;
 nav {
   margin-left: auto;
   margin-right: auto;
-  width: 950px;
+  width: 960px;
 }
 .header-logo{
   width: 300px;
@@ -394,6 +414,8 @@ nav {
 }
 .main-nav {
   float: left;
+  margin: auto;
+  line-height: 111px;
 }
 .main-nav > li {
   float: left;
@@ -403,7 +425,7 @@ nav {
 }
 .main-nav > li:hover {
   cursor: pointer;
-  color: #EFFF00
+  color: #EFFF00;
 }
 
 .nav-buttons {

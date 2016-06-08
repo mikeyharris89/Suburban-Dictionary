@@ -4,6 +4,7 @@ var ClientActions = require('../actions/client_actions.js');
 var Link = require('react-router').Link;
 var TermIndexItem = require('./termIndexItem');
 var TermStore = require('../stores/term_store');
+var SesssionApiUtil = require('../util/session_api_util');
 
 var UserShow = React.createClass({
   // var userId = this.props.params.userId;
@@ -47,7 +48,10 @@ var UserShow = React.createClass({
     var userId = this.props.params.userId || SessionStore.currentUser().id;
 
     if (parseInt(userId) === SessionStore.currentUser().id) {
-      heading = <h3>Hello {SessionStore.currentUser().username}!</h3>;
+      heading = <h3 className="group">
+                  <p className="heading">Hello {SessionStore.currentUser().username}!</p>
+                  <button className="logout" type="submit" onClick={ SessionApiUtil.logout }>LOGOUT</button>
+                </h3>;
     } else {
       if (term) {
         heading = <h3>Definitions by {term.username}</h3>;

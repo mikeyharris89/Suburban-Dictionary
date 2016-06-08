@@ -17,7 +17,7 @@ var App = React.createClass({
 
   openForm: function () {
     if (!SessionStore.isUserLoggedIn()){
-      this.context.router.push("login/");
+      this.context.router.push("login");
     } else {
     this.setState({ hiddenForm:  false });
     }
@@ -36,7 +36,7 @@ var App = React.createClass({
     this.context.router.push("/");
   },
   userSignIn: function() {
-    var path = "signup";
+    var path = "login";
     if (SessionStore.isUserLoggedIn()){
       var userId = SessionStore.currentUser().id;
       path = "users/" + userId;
@@ -101,7 +101,6 @@ var App = React.createClass({
             </div>
           </nav>
         </header>
-        {this.greeting()}
         {this.props.children}
 
         <TermForm hidden={this.state.hiddenForm} close={this.closeForm}/>
@@ -110,4 +109,5 @@ var App = React.createClass({
   }
 });
 
+// {this.greeting()}
 module.exports = App;

@@ -71,6 +71,13 @@ var LoginForm = React.createClass({
     return this.props.location.pathname.slice(1);
   },
 
+  guestSignIn: function () {
+    var guestData = {
+    username: "Guest",
+    password: "password"
+    };
+    this.setState(guestData);
+  },
 	render: function () {
     var navLink;
     if (this.formType() === "login") {
@@ -80,11 +87,10 @@ var LoginForm = React.createClass({
     }
 
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form className="content" onSubmit={this.handleSubmit}>
 
         <p className="login">{ this.formType() } or { navLink } to
           <b> post new definitions, images, and sounds </b>
-          and create lists of favorites
         </p>
         <p className="errors">
         { this.fieldErrors("errors") }
@@ -114,6 +120,7 @@ var LoginForm = React.createClass({
 
         <br />
 				<button className="submit" type="submit">Submit!</button>
+        <button className="submit" onClick={this.guestSignIn}>Sign in as Guest!</button>
 			</form>
 		);
 	}

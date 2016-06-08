@@ -19,10 +19,15 @@ Term.create!(
   sentence: "Ugh, how come your curfew is 10. Nerd",
   user_id: 1
   )
-  
+
 Term.create!(
   name: "Minivan",
   definition: "The vessel in which we drive our 2 kids around.",
   sentence: "Billy, pick up your goldfish off of the minivan floor!",
   user_id: 1
   )
+
+User.create!(
+  username: "Guest",
+  password: "password",
+)

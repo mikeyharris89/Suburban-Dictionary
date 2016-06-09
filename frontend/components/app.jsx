@@ -4,6 +4,8 @@ var SessionStore = require('../stores/session_store');
 var SessionApiUtil = require('../util/session_api_util');
 var TermForm = require('./termForm');
 var SearchBar = require('./searchBar');
+var TermStore = require('../stores/term_store');
+var ClientActions = require('../actions/client_actions');
 
 var App = React.createClass({
   getInitialState: function() {
@@ -61,7 +63,16 @@ var App = React.createClass({
       );
     }
   },
-  // { this.greeting() }
+
+  randomClick: function() {
+    ClientActions.fetchForRandom(this.randomPage);
+  },
+
+  randomPage: function () {
+    var terms = TermStore.all();
+    var termId = terms[Math.floor(Math.random() * terms.length)].id;
+    this.context.router.push("terms/" + termId);
+  },
 
   render: function() {
     // <input className="search-bar" placeholder="Type any word here..."/>
@@ -87,6 +98,9 @@ var App = React.createClass({
                   <i className="fa fa-plus" aria-hidden="true"></i>
                 </button>
 
+                <button>
+                <i className="fa fa-random" onClick={this.randomClick} aria-hidden="true"></i>
+                </button>
 
                 <button onClick = { this.userSignIn }>
                   <i className="fa fa-user" aria-hidden="true"></i>
@@ -110,7 +124,3 @@ module.exports = App;
 // <li>Browse</li>
 // <li>Favorites</li>
 // <li>Magic</li>
-
-// <button>
-// <i className="fa fa-random" aria-hidden="true"></i>
-// </button>

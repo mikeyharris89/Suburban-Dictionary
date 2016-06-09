@@ -71,7 +71,7 @@ var EditForm = React.createClass({
 
 
   closeModal: function () {
-    this.setState({ name: "", definition: "", sentence: "", imageFile: ""});
+    this.setState({ name: "", definition: "", sentence: "", imageFile: "", imageUrl: ""});
     ErrorActions.clearErrors();
     this.props.close();
   },

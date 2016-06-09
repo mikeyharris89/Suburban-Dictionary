@@ -10,6 +10,17 @@ var TermApiUtil = {
       }
     });
   },
+
+  fetchForRandom: function(callback) {
+    $.ajax({
+      url: "api/terms",
+      success: function (terms) {
+        TermActions.receiveAllTerms(terms);
+        callback();
+      }
+    });
+  },
+
   fetchLikeNameTerms: function(id) {
     $.ajax({
       url: "api/like_names",
@@ -65,13 +76,12 @@ var TermApiUtil = {
       },
 
       error: function(xhr) {
-  
+
         var errors = xhr.responseJSON;
         ErrorActions.setErrors("update", errors);
       }
     });
   },
-  // {term: {name: data.name, definition: data.definition, sentence: data.sentence}},
 
   deleteTerm: function (id) {
     $.ajax({

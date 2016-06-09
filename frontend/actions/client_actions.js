@@ -5,6 +5,11 @@ var ClientActions = {
   fetchTerms: function () {
     TermApiUtil.fetchTerms();
   },
+  
+  fetchForRandom: function (callback) {
+    TermApiUtil.fetchForRandom(callback);
+  },
+
   fetchLikeNameTerms: function(id) {
     TermApiUtil.fetchLikeNameTerms(id);
   },

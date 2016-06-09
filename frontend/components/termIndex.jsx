@@ -24,6 +24,7 @@ var TermIndex = React.createClass({
 
 
   render: function () {
+
     var welcome = "Welcome to Suburban Dictionary:\
      Your favoite place to be as raunchy as possible.\
      And by raunchy we mean, clean and whitewashed. Just like the suburbs!\
@@ -41,8 +42,10 @@ var TermIndex = React.createClass({
           })
         }
         </ul>
-        <div className="welcome">{welcome}</div>
-      </div>
+        <div className="panel">
+          <img className="gif" src="assets/margot.gif" alt="Margot" title="Margot"/>
+        </div>
+    </div>
     );
   }
 });

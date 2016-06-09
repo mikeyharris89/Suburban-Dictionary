@@ -17,7 +17,6 @@ class Api::TermsController < ApplicationController
   def create
 
     @term = Term.new(term_params)
-    debugger
     if @term.save
       render :show
     else

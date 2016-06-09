@@ -15,7 +15,9 @@ class Api::TermsController < ApplicationController
   end
 
   def create
+
     @term = Term.new(term_params)
+    debugger
     if @term.save
       render :show
     else
@@ -28,11 +30,13 @@ class Api::TermsController < ApplicationController
   end
 
   def update
+
     @term = Term.find(params[:id])
 
     if @term.update(term_params)
       render :show
     else
+
       render json: @term.errors.full_messages, status: 422
     end
 

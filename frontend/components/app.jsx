@@ -75,9 +75,6 @@ var App = React.createClass({
             </a>
           </ul>
             <ul className="main-nav">
-              <li>Browse</li>
-              <li>Favorites</li>
-              <li>Magic</li>
             </ul>
           </nav>
           <nav className="bottom-bar group">
@@ -90,9 +87,6 @@ var App = React.createClass({
                   <i className="fa fa-plus" aria-hidden="true"></i>
                 </button>
 
-                <button>
-                  <i className="fa fa-random" aria-hidden="true"></i>
-                </button>
 
                 <button onClick = { this.userSignIn }>
                   <i className="fa fa-user" aria-hidden="true"></i>
@@ -111,3 +105,12 @@ var App = React.createClass({
 
 // {this.greeting()}
 module.exports = App;
+
+
+// <li>Browse</li>
+// <li>Favorites</li>
+// <li>Magic</li>
+
+// <button>
+// <i className="fa fa-random" aria-hidden="true"></i>
+// </button>

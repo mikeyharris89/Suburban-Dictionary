@@ -12,6 +12,7 @@ var TermIndexItem = React.createClass({
 
   openEdit: function () {
     this.setState({ hiddenEdit: false });
+      window.scrollTo(0,0);
   },
 
   closeEdit: function () {
@@ -24,12 +25,8 @@ var TermIndexItem = React.createClass({
     hashHistory.push("/");
   },
 
-  handleClick: function(e) {
-    e.preventDefault();
-
-  },
-
   render: function() {
+
     var buttons = "";
     if (parseInt(this.props.term.user_id) === SessionStore.currentUser().id) {
       buttons =
@@ -38,6 +35,11 @@ var TermIndexItem = React.createClass({
         <button className="term-change" onClick={this.deleteTerm}>Delete</button>
       </div>;
     }
+    var img = <img src={ this.props.term.image_url }/>;
+
+    // if ((this.props.term.image_url === "") || (this.props.term.image_url === [%]["assets/missing.png"] )){
+    //   img = "";
+    // }
     return (
       <div className="def-panel">
         <div>
@@ -46,7 +48,9 @@ var TermIndexItem = React.createClass({
         <Link to={"/terms/" + this.props.term.id} className="term-name">{this.props.term.name}</Link>&nbsp;
         <div className="definition">{this.props.term.definition}</div>
         <div className="sentence">{this.props.term.sentence}</div>
-        <img src={ this.props.term.image_url }/>
+        <div className="term-image">
+          { img }
+        </div>
         <div className="contributor">by
             <Link to={"/users/" + this.props.term.user_id} className="term-author">
               {this.props.term.username}

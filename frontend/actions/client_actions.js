@@ -13,12 +13,12 @@ var ClientActions = {
     TermApiUtil.getTerm(id);
   },
 
-  createTerm: function (data) {
-    TermApiUtil.createTerm(data);
+  createTerm: function (data, closeModal) {
+    TermApiUtil.createTerm(data, closeModal);
   },
 
-  editTerm: function (data) {
-    TermApiUtil.updateTerm(data);
+  editTerm: function (data, closeModal) {
+    TermApiUtil.updateTerm(data, closeModal);
   },
 
   deleteTerm: function (id) {

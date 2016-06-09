@@ -41,10 +41,6 @@ var SearchBar = React.createClass({
       }
     }.bind(this));
 
-    // if (matches.length === 0 ) {
-    //   matches.push("No matches!");
-    // }
-
     return matches;
   },
   showDropDown: function() {
@@ -53,14 +49,38 @@ var SearchBar = React.createClass({
 
   selectName: function() {
 
-    // var name = arguments[1];
-    // this.setState({ inputVal: name} );
     this.setState({inputVal: "", terms: [], hiddenDrop: true });
     ClientActions.fetchSearchTerms("");
     this.context.router.push("/terms/" + arguments[0]);
   },
-  // <ReactCSSTransitionGroup transitionName="auto" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-  // </ReactCSSTransitionGroup>
+
+  // handleKeyStroke: function (e) {
+  //   var key = e.keyCode,
+  //       if ( key != 40 && key != 38 ) return;
+  //
+  //       if ( key == 40 ) // Down key
+  //       var
+  //       {
+  //           if ( ! $selected.length || $selected.is(':last-child') ) {
+  //               $current = $listItems.eq(0);
+  //           }
+  //           else {
+  //               $current = $selected.next();
+  //           }
+  //       }
+  //       else if ( key == 38 ) // Up key
+  //       {
+  //           if ( ! $selected.length || $selected.is(':first-child') ) {
+  //               $current = $listItems.last();
+  //           }
+  //           else {
+  //               $current = $selected.prev();
+  //           }
+  //       }
+  //
+  //       $current.addClass('selected');
+  //   });​  },
+  //
 
   render: function() {
     var results = this.matches().map(function(match, i) {
@@ -72,7 +92,7 @@ var SearchBar = React.createClass({
     return (
     <div>
       <input className="search-bar" placeholder="Type any word here..." onFocus= {this.showDropDown} onChange={this.handleInput} value={this.state.inputVal}/>
-      <ul onBlur={this.blur} className="search-result" hidden={this.state.dropDown}>
+      <ul onKeyDown={this.handleKeyStroke} className="search-result" hidden={this.state.dropDown}>
         {results}
       </ul>
     </div>

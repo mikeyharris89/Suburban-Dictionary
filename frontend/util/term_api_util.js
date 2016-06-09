@@ -1,4 +1,5 @@
-var TermActions = require('../actions/term_actions');
+var TermActions = require('../actions/term_actions'),
+    ErrorActions = require('../actions/error_actions');
 
 var TermApiUtil = {
   fetchTerms: function () {
@@ -18,7 +19,6 @@ var TermApiUtil = {
         TermActions.receiveAllTerms(terms);
       },
       error: function() {
-        console.log("uh-ohhhhh");
       }
     });
   },
@@ -33,7 +33,7 @@ var TermApiUtil = {
   },
 
 
-  createTerm: function (data) {
+  createTerm: function (data, closeModal) {
     $.ajax({
       url: "api/terms",
       type: "POST",
@@ -42,20 +42,36 @@ var TermApiUtil = {
       data: data,
       success: function (term) {
         TermActions.receiveSingleTerm(term);
+        closeModal();
+      },
+      error: function (xhr) {
+
+        var errors = xhr.responseJSON;
+        ErrorActions.setErrors("create", errors);
       }
     });
   },
 
-  updateTerm: function (data) {
+  updateTerm: function (data, closeModal) {
     $.ajax({
-      url: "api/terms/" + data.id,
+      url: "api/terms/" + parseInt(data.get("id")),
       type: "PATCH",
-      data: {term: {name: data.name, definition: data.definition, sentence: data.sentence}},
+      contentType: false,
+      processData: false,
+      data: data,
       success: function (term) {
         TermActions.receiveSingleTerm(term);
+        closeModal();
+      },
+
+      error: function(xhr) {
+  
+        var errors = xhr.responseJSON;
+        ErrorActions.setErrors("update", errors);
       }
     });
   },
+  // {term: {name: data.name, definition: data.definition, sentence: data.sentence}},
 
   deleteTerm: function (id) {
     $.ajax({

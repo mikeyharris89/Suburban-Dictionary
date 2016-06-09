@@ -4,20 +4,37 @@ var React = require('react'),
   ClientActions = require('../actions/client_actions'),
   ReactRouter = require('react-router'),
   ErrorStore = require('../stores/error_store');
+  ErrorActions = require('../actions/error_actions');
 
 var EditForm = React.createClass({
   getInitialState: function() {
     return({
       name: this.props.term.name,
       definition: this.props.term.definition,
-      sentence: this.props.term.sentence
+      sentence: this.props.term.sentence,
+      imageFile: this.props.term.imageFile,
+      imageUrl: this.props.term.imageUrl
     });
   },
-
 
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
+
+  componentDidMount: function () {
+    if (!this.props.imageFile) {
+      this.setState({imageFile: null});
+    }
+    if (!this.props.imageUrl) {
+      this.setState({imageUrl: ""});
+    }
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+  },
+
+  componentWillUnmount: function() {
+      this.errorListener.remove();
+  },
+
   nameChange: function (e) {
     this.setState( { name: e.target.value} );
   },
@@ -30,36 +47,46 @@ var EditForm = React.createClass({
     this.setState( { sentence: e.target.value} );
   },
 
-  handleClick: function(e) {
+  updateFile: function (e) {
+    var file = e.currentTarget.files[0];
+    var fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }.bind(this);
 
-    this.props.close();
-    // this.context.router.push("/");
-  },
-
-  handleSubmit: function(e) {
-    var data = {
-      name: this.state.name,
-      definition: this.state.definition,
-      sentence: this.state.sentence,
-      user_id: SessionStore.currentUser().id,
-      id: this.props.term.id
-    };
-
-    ClientActions.editTerm(data);
-    this.setState({ name: "", definition: "", sentence: ""});
-    this.props.close();
-    // this.context.router.push("/");
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   },
 
   fieldErrors: function (field) {
-    var errors = ErrorStore.formErrors(this.formType());
-    if (!errors[field]) { return; }
+    var errors = ErrorStore.formErrors("update");
+    if (!errors[0]) { return; }
 
-    var messages = errors[field].map(function (errorMsg, i) {
-      return <li key={ i }>{ errorMsg }</li>;
+    var messages = Object.keys(errors).map(function (key, i) {
+      return <li key={ i }>{ errors[key] }</li>;
     });
+    return <ul className="errors">{ messages }</ul>;
+  },
 
-    return <ul>{ messages }</ul>;
+
+  closeModal: function () {
+    this.setState({ name: "", definition: "", sentence: "", imageFile: ""});
+    ErrorActions.clearErrors();
+    this.props.close();
+  },
+
+  handleSubmit: function(e) {
+
+    var formData = new FormData();
+
+    formData.append("term[name]", this.state.name);
+    formData.append("term[definition]", this.state.definition);
+    formData.append("term[sentence]", this.state.sentence);
+    formData.append("term[user_id]", SessionStore.currentUser().id);
+    formData.append("term[image]", this.state.imageFile);
+    formData.append("id", this.props.term.id);
+    ClientActions.editTerm(formData, this.closeModal);
   },
 
   render: function() {
@@ -73,6 +100,7 @@ var EditForm = React.createClass({
           <span className="modal-title">EDIT WORD</span>
         </div>
         <form onSubmit={this.handleSubmit}>
+          { this.fieldErrors("errors") }
           <div className="modal-content">
             <div className="help-block">All the definitions on
               <b> Suburban Dictionary </b>
@@ -107,12 +135,13 @@ var EditForm = React.createClass({
             value={this.state.sentence}
             onChange={this.sentenceChange}
             />
+            <input type="file" onChange={this.updateFile}/>
             <div className= "disclaimer">Definitions are subject to our terms of
             service and privacy policay.</div>
           </div>
           <button className="submit" type="submit">Submit!</button>
         </form>
-        <a onClick={this.handleClick} className="close-modal">x</a>
+        <a onClick={this.closeModal} className="close-modal">x</a>
       </div>
     );
   }

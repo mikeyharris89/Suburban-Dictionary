@@ -3,7 +3,8 @@ var React = require('react'),
   SessionStore = require('../stores/session_store'),
   ClientActions = require('../actions/client_actions'),
   ReactRouter = require('react-router'),
-  ErrorStore = require('../stores/error_store');
+  ErrorStore = require('../stores/error_store'),
+  ErrorActions = require('../actions/error_actions');
 
 var TermForm = React.createClass({
   getInitialState: function() {
@@ -12,12 +13,20 @@ var TermForm = React.createClass({
       definition: "",
       sentence: "",
       imageFile: null,
-      imageUrl: null
+      imageUrl: ""
     });
   },
 
   contextTypes: {
     router: React.PropTypes.object.isRequired
+  },
+
+  componentDidMount: function () {
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+  },
+
+  componentWillUnmount: function() {
+      this.errorListener.remove();
   },
 
   nameChange: function (e) {
@@ -44,20 +53,21 @@ var TermForm = React.createClass({
     }
   },
 
-  handleClick: function(e) {
-    this.props.close();
-    // this.context.router.push("/");
+  fieldErrors: function (field) {
+    var errors = ErrorStore.formErrors("create");
+    if (!errors[0]) { return; }
+
+    var messages = Object.keys(errors).map(function (key, i) {
+      return <li key={ i }>{ errors[key] }</li>;
+    });
+    return <ul className="errors">{ messages }</ul>;
   },
 
-  fieldErrors: function (field) {
-    var errors = ErrorStore.formErrors(this.formType());
-    if (!errors[field]) { return; }
 
-    var messages = errors[field].map(function (errorMsg, i) {
-      return <li key={ i }>{ errorMsg }</li>;
-    });
-
-    return <ul>{ messages }</ul>;
+  closeModal: function () {
+    this.setState({ name: "", definition: "", sentence: "", imageFile: ""});
+    ErrorActions.clearErrors();
+    this.props.close();
   },
 
   handleSubmit: function(e) {
@@ -68,18 +78,7 @@ var TermForm = React.createClass({
     formData.append("term[sentence]", this.state.sentence);
     formData.append("term[user_id]", SessionStore.currentUser().id);
     formData.append("term[image]", this.state.imageFile);
-    ClientActions.createTerm(formData);
-
-    // var data = {
-    //   name: this.state.name,
-    //   definition: this.state.definition,
-    //   sentence: this.state.sentence,
-    //   user_id: SessionStore.currentUser().id
-    // };
-    //
-    // ClientActions.createTerm(data);
-    this.setState({ name: "", definition: "", sentence: "", imageFile: null});
-    this.props.close();
+    ClientActions.createTerm(formData, this.closeModal);
   },
 
 
@@ -94,6 +93,7 @@ var TermForm = React.createClass({
           <span className="modal-title">NEW WORD</span>
         </div>
         <form onSubmit={this.handleSubmit}>
+          { this.fieldErrors("errors") }
           <div className="modal-content">
             <div className="help-block">All the definitions on
               <b> Suburban Dictionary </b>
@@ -137,7 +137,7 @@ var TermForm = React.createClass({
           </div>
           <button className="submit" type="submit">Submit!</button>
         </form>
-        <a onClick={this.handleClick} className="close-modal">x</a>
+        <a onClick={this.closeModal} className="close-modal">x</a>
       </div>
     );
   }

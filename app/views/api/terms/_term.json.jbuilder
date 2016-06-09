@@ -4,6 +4,10 @@ json.extract!(
 )
 json.date_head term.date
 json.date_string term.date_string
-json.image_url asset_path(term.image.url)
+if term.image.file?
+  json.image_url asset_path(term.image.url)
+else
+  json.image_url nil
+end
 # json.user_id term.user_id
 # json.created_at term.created_at

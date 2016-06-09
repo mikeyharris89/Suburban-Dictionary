@@ -12,7 +12,7 @@ var TermForm = React.createClass({
       name: "",
       definition: "",
       sentence: "",
-      imageFile: null,
+      imageFile: "",
       imageUrl: ""
     });
   },

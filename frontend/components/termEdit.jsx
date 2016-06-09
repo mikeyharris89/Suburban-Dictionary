@@ -23,7 +23,7 @@ var EditForm = React.createClass({
 
   componentDidMount: function () {
     if (!this.props.imageFile) {
-      this.setState({imageFile: null});
+      this.setState({imageFile: ""});
     }
     if (!this.props.imageUrl) {
       this.setState({imageUrl: ""});

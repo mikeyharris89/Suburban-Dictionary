@@ -44,6 +44,13 @@ var TermIndex = React.createClass({
         </ul>
         <div className="panel">
           <img className="gif" src="assets/margot.gif" alt="Margot" title="Margot"/>
+          <div className="slogan-box">
+            <div>SUBURBAN</div>
+            <div>DICTIONARY</div>
+            <div>IS WRITTEN</div>
+            <div>BY YOU</div>
+          </div>
+          {welcome}
         </div>
     </div>
     );

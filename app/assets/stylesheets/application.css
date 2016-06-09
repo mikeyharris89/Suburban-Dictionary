@@ -203,11 +203,11 @@ padding-bottom: 10px;
   display: block;
   padding: 20px;
   font-size: 20px;
-  float: left;
+  float: right;
   color: #134FE6;
   word-wrap: break-word;
   height: 100%;
-  width: 250px;
+  width: 280px;
   margin-left: 20px;
 }
 
@@ -217,8 +217,32 @@ padding-bottom: 10px;
   border-radius: 130%;
   border: 1px solid black;
   position: absolute;
+  /*float: right;*/
   top: 20px;
   right: 20px;
+  z-index: 2;
+}
+
+.slogan-box {
+  float: left;
+  z-index: 3;
+  position: relative;
+}
+
+.slogan-box > div {
+  background: #EFFF00;
+  color: black;
+  font-size:  26px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  line-height: 26px;
+  margin-bottom: 2px;
+  margin-right: 20px;
+
+;
+
+
 }
 .term-name {
   color: #134FE6;

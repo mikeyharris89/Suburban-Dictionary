@@ -121,6 +121,33 @@ h1:hover {
   font-size: 24px;
 }
 
+.alt-signup {
+  margin-top: 50px;
+  display: block;
+}
+
+.alt-signup > button {
+  width: 400px;
+  float: left;
+  margin-top: 0;
+}
+
+.alt-signup >  a {
+  width: 400px;
+  float: right;
+  border-style: solid;
+  border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0 2px 0 black;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-family: "Lora", Georgia, Cambria, "Times New Roman", Times, serif;
+  line-height: normal;
+}
+
 .def-panel {
   border-style: solid;
   border-width: 0px;
@@ -199,7 +226,6 @@ padding-bottom: 10px;
   position: relative;
 }
 .term-change {
-  /*position: absolute;*/
   left: 20px;
   float: right;
   border-radius: 20px;
@@ -367,10 +393,6 @@ h3 {
   text-align: center;
 }
 
-.preview {
-  /*height: 150px;
-  float: left;*/
-}
 .preview > img {
   height: 150px;
   width: auto;
@@ -382,9 +404,6 @@ h3 {
   display: block;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.header {
 }
 .search-bar {
   display: block;

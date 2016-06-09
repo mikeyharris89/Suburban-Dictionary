@@ -71,13 +71,19 @@ var LoginForm = React.createClass({
     return this.props.location.pathname.slice(1);
   },
 
-  guestSignIn: function () {
+  guestSignIn: function (e) {
     var guestData = {
     username: "Guest",
     password: "password"
     };
     this.setState(guestData);
   },
+
+  facebookSignIn: function(e){
+    e.preventDefault();
+    window.location = "localhost:3000/#/auth/facebook";
+  },
+
 	render: function () {
     var navLink;
     if (this.formType() === "login") {
@@ -120,8 +126,12 @@ var LoginForm = React.createClass({
 
         <br />
 				<button className="submit" type="submit">Submit!</button>
-        <button className="submit" onClick={this.guestSignIn}>Sign in as Guest!</button>
-        <a href="auth/facebook">Sign In With Facebook</a>
+
+        <ul className="alt-signup group">
+          <button className="submit" onClick={this.guestSignIn}>Sign in as Guest!</button>
+          <a className="submit" href="auth/facebook">Sign In With Facebook</a>
+        </ul>
+
 			</form>
 		);
 	}

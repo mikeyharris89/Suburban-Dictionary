@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates :username, :session_token, presence: true
   validates :username, uniqueness: true
-   
+
   attr_reader :password
 
   after_initialize :ensure_session_token, :password_validates
@@ -41,7 +41,8 @@ class User < ActiveRecord::Base
    if user.nil?
      user = User.create!(
        facebook_uid: auth_hash[:uid],
-       username: "#{auth_hash[:info][:first_name]} #{auth_hash[:info][:last_name]}"
+       username: auth_hash[:info][:name]
+      #  username: "#{auth_hash[:info][:first_name]} #{auth_hash[:info][:last_name]}"
      )
    end
 

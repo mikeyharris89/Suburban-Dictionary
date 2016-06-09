@@ -5,7 +5,7 @@ class Term < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
-  
+
   def date
     month = self.created_at.strftime("%B")
     return "#{month[0..2].upcase} #{self.created_at.day}"

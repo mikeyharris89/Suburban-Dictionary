@@ -61,6 +61,7 @@ var TermForm = React.createClass({
   },
 
   handleSubmit: function(e) {
+
     var formData = new FormData();
     formData.append("term[name]", this.state.name);
     formData.append("term[definition]", this.state.definition);
@@ -128,9 +129,11 @@ var TermForm = React.createClass({
             onChange={this.sentenceChange}
             />
             <input type="file" onChange={this.updateFile}/>
+            <div className="preview">
+              <img src={this.state.imageUrl}/>
+            </div>
             <div className= "disclaimer">Definitions are subject to our terms of
-            service and privacy policay.</div>
-            <img src={this.state.imageUrl}/>
+            service and privacy policy.</div>
           </div>
           <button className="submit" type="submit">Submit!</button>
         </form>

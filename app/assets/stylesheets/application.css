@@ -367,6 +367,15 @@ h3 {
   text-align: center;
 }
 
+.preview {
+  /*height: 150px;
+  float: left;*/
+}
+.preview > img {
+  height: 150px;
+  width: auto;
+  margin: auto;
+}
 .suburban-top-bar {
   background-color: #1D2439;
   position: relative;

@@ -211,6 +211,9 @@ padding-bottom: 10px;
   margin-left: 20px;
 }
 
+.panel > p {
+  padding-top: 125px;
+}
 .gif {
   width: 130px;
   height: 130px;
@@ -335,6 +338,7 @@ h3 {
 }
 .modal {
   display: none;
+  top: 0;
 }
 
 .modal-is-active {
@@ -353,6 +357,7 @@ h3 {
   padding: 15px;
   background-color: rgba(19, 79, 230, 0.8);
   visibility: 0.7;
+
 }
 
 .close-modal {
@@ -370,6 +375,7 @@ h3 {
   font-size: 30px;
   text-decoration: none;
 }
+
 
 .modal-content {
   z-index: 1000;
@@ -447,7 +453,7 @@ h3 {
   margin: auto;
 }
 .suburban-top-bar {
-  background-color: #1D2439;
+  background-color: #0E1F36;
   position: relative;
   display: block;
   padding-left: 10px;

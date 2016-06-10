@@ -20,6 +20,15 @@ TermStore.all = function() {
   return terms;
 };
 
+TermStore.browseTerms = function() {
+  var terms = [];
+
+  Object.keys(_terms).forEach(function(key){
+    terms.push(_terms[key]);
+  });
+  return terms;
+};
+
 TermStore.likeNames = function(id){
   var likeNames = [];
   Object.keys(_terms).forEach(function(key){
@@ -39,7 +48,6 @@ var resetTerms = function(terms) {
   terms.forEach(function(term) {
     _terms[term.id] = term;
   });
-
 };
 
 var setTerm = function(term){

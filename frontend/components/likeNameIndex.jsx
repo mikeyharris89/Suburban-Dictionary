@@ -32,18 +32,19 @@ var LikeNameIndex = React.createClass({
   },
 
   render: function () {
-    return ( <div className="content">
+    return (
+      <div className="content">
 
-      <ul>
+        <ul>
 
-      {
-        this.state.terms.map(function(term){
-          return (<TermIndexItem key={term.id} term={term}/>);
-        })
-      }
+        {
+          this.state.terms.map(function(term){
+            return (<TermIndexItem key={term.id} term={term}/>);
+          })
+        }
 
-      </ul>
-    </div>
+        </ul>
+      </div>
     );
   }
 });

@@ -9,7 +9,7 @@ var ClientActions = require('../actions/client_actions');
 
 var App = React.createClass({
   getInitialState: function() {
-    return ({ hiddenForm: true });
+    return ({ hiddenForm: true, hiddenBrowse: true });
   },
 
   componentDidMount: function () {
@@ -74,6 +74,9 @@ var App = React.createClass({
     this.context.router.push("terms/" + termId);
   },
 
+  hideBrowse: function() {
+    this.setState({hiddenBrowse: false});
+  },
   render: function() {
     // <input className="search-bar" placeholder="Type any word here..."/>
     return (
@@ -86,6 +89,16 @@ var App = React.createClass({
             </a>
           </ul>
             <ul className="main-nav">
+              <ul className="browse main-nav">Browse
+                <div className="alphabet-list">
+                  {
+                    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(function(char, i) {
+                      return <Link to={"/browse_terms/" + char} key={i}>{char}</Link>;
+                    })
+                  }
+                </div>
+              </ul>
+
             </ul>
           </nav>
           <nav className="bottom-bar group">
@@ -121,6 +134,5 @@ var App = React.createClass({
 module.exports = App;
 
 
-// <li>Browse</li>
 // <li>Favorites</li>
 // <li>Magic</li>

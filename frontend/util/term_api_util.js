@@ -34,6 +34,17 @@ var TermApiUtil = {
     });
   },
 
+  fetchBrowseTerms: function(letter) {
+    $.ajax({
+      url: "api/browse_terms/" + letter,
+      type: "GET",
+      data: {letter: letter},
+      success: function (terms) {
+        TermActions.receiveAllTerms(terms);
+      },
+    });
+  },
+
   getTerm: function (id) {
     $.ajax({
       url: "api/terms/" + id,

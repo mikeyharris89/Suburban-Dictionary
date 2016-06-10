@@ -1,7 +1,8 @@
 class Api::TermsController < ApplicationController
 
   def index
-    @terms = Term.order(created_at: :desc).includes(:user)
+    @terms = Term.order(created_at: :desc).includes(:user).per_page_kaminari(params[:page])
+    @pages = @terms.total_pages
   end
 
   def like_name_index
@@ -14,6 +15,13 @@ class Api::TermsController < ApplicationController
     render :index
   end
 
+  def browse_terms_index
+
+    letter = params[:letter]
+    @terms = Term.where('upper(name) LIKE :f_letter', {f_letter: "#{letter}%"})
+    # @terms = Term.where('upper(name) lIKE "M%"')
+    render :index
+  end
   def create
 
     @term = Term.new(term_params)

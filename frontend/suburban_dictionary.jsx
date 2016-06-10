@@ -11,6 +11,7 @@ var App = require('./components/app');
 var TermIndex = require('./components/termIndex');
 var TermShow = require('./components/termShow');
 var UserShow = require('./components/userShow');
+var BrowseIndex = require('./components/browseIndex');
 
 
 
@@ -26,6 +27,7 @@ var router = (
       <Route path="signup" component={ LoginForm } />
       <Route path="terms/:termId" component={ TermShow } />
       <Route path="users/:userId" component={ UserShow } />
+      <Route path="browse_terms/:letter" component={ BrowseIndex } />
     </Route>
   </Router>
 );

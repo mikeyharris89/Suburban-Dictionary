@@ -71,7 +71,7 @@ var TermForm = React.createClass({
   },
 
   handleSubmit: function(e) {
-
+    e.preventDefault();
     var formData = new FormData();
     formData.append("term[name]", this.state.name);
     formData.append("term[definition]", this.state.definition);

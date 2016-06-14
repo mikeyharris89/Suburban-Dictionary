@@ -1,8 +1,9 @@
 var React = require('react'),
     ClientActions = require('../actions/client_actions'),
     SearchStore = require('../stores/search_store');
+    OnClickOutside = require('react-onclickoutside');
 
-var SearchBar = React.createClass({
+var SearchBar = OnClickOutside(React.createClass({
   getInitialState: function() {
     return { inputVal: "", terms: [], hiddenDrop: true };
   },
@@ -15,8 +16,11 @@ var SearchBar = React.createClass({
     this.listener.remove();
   },
 
-  getTerms: function() {
+  handleClickOutside: function(evt) {
+    this.setState({inputVal: "", terms: [], hiddenDrop: true});
+  },
 
+  getTerms: function() {
     this.setState( {inputVal: this.state.inputVal, terms: SearchStore.all()} );
   },
 
@@ -46,6 +50,10 @@ var SearchBar = React.createClass({
     this.setState( { hiddenDrop: false });
   },
 
+  closeDropDown: function() {
+    this.setState( {hiddenDrop: true});
+  },
+
   selectName: function() {
 
     this.setState({inputVal: "", terms: [], hiddenDrop: true });
@@ -53,33 +61,7 @@ var SearchBar = React.createClass({
     this.context.router.push("/terms/" + arguments[0]);
   },
 
-  // handleKeyStroke: function (e) {
-  //   var key = e.keyCode,
-  //       if ( key != 40 && key != 38 ) return;
-  //
-  //       if ( key == 40 ) // Down key
-  //       var
-  //       {
-  //           if ( ! $selected.length || $selected.is(':last-child') ) {
-  //               $current = $listItems.eq(0);
-  //           }
-  //           else {
-  //               $current = $selected.next();
-  //           }
-  //       }
-  //       else if ( key == 38 ) // Up key
-  //       {
-  //           if ( ! $selected.length || $selected.is(':first-child') ) {
-  //               $current = $listItems.last();
-  //           }
-  //           else {
-  //               $current = $selected.prev();
-  //           }
-  //       }
-  //
-  //       $current.addClass('selected');
-  //   });​  },
-  //
+
 
   render: function() {
     var results = this.matches().map(function(match, i) {
@@ -98,6 +80,6 @@ var SearchBar = React.createClass({
 
     );
   }
-});
+}))
 
 module.exports = SearchBar;

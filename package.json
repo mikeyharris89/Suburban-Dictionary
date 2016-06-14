@@ -15,11 +15,13 @@
     "react": "^0.14.2",
     "react-addons-linked-state-mixin": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-onclickoutside": "^5.2.0",
     "react-router": "^2.0.0",
     "webpack": "^1.12.4"
   },
-
-  "devDependencies": {},
+  "devDependencies": {
+    "react-onclickoutside": "^5.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "./node_modules/.bin/webpack"
@@ -28,8 +30,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-
-   "node": "5.1.0",
-   "npm": "3.3.12"
+    "node": "5.1.0",
+    "npm": "3.3.12"
   }
 }

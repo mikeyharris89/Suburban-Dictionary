@@ -19,9 +19,9 @@ class Api::TermsController < ApplicationController
 
     letter = params[:letter]
     @terms = Term.where('upper(name) LIKE :f_letter', {f_letter: "#{letter}%"})
-    # @terms = Term.where('upper(name) lIKE "M%"')
     render :index
   end
+  
   def create
 
     @term = Term.new(term_params)

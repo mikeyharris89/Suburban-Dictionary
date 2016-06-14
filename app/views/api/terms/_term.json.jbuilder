@@ -9,5 +9,3 @@ if term.image.file?
 else
   json.image_url nil
 end
-# json.user_id term.user_id
-# json.created_at term.created_at

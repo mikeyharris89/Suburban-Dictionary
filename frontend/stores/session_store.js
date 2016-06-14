@@ -1,8 +1,6 @@
 var AppDispatcher = require('../dispatcher/dispatcher.js');
 var Store = require('flux/utils').Store;
 
-
-
 var SessionStore = new Store(AppDispatcher);
 
 var _currentUser = {},

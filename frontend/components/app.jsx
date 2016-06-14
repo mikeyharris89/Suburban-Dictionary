@@ -78,7 +78,6 @@ var App = React.createClass({
     this.setState({hiddenBrowse: false});
   },
   render: function() {
-    // <input className="search-bar" placeholder="Type any word here..."/>
     return (
       <div>
         <header className="suburban-top-bar group">
@@ -130,9 +129,4 @@ var App = React.createClass({
   }
 });
 
-// {this.greeting()}
 module.exports = App;
-
-
-// <li>Favorites</li>
-// <li>Magic</li>

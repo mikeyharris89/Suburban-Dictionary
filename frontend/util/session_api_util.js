@@ -21,10 +21,9 @@ var SessionApiUtil = {
     $.ajax({
       type: 'DELETE',
       url: "/api/session/",
-
       success: function(currentUser) {
         SessionActions.removeCurrentUser(currentUser);
-      },
+      }
     });
   },
 
@@ -34,10 +33,7 @@ var SessionApiUtil = {
       url: "/api/session/",
       success: function(user){
         SessionActions.receiveCurrentUser(user);
-      },
-      error: function (xhr) {
-			}
-
+      }
     });
   },
 

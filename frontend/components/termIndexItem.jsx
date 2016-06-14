@@ -37,9 +37,6 @@ var TermIndexItem = React.createClass({
     }
     var img = <img src={ this.props.term.image_url }/>;
 
-    // if ((this.props.term.image_url === "") || (this.props.term.image_url === [%]["assets/missing.png"] )){
-    //   img = "";
-    // }
     return (
       <div className="def-panel">
         <div>

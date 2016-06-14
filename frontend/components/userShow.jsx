@@ -7,11 +7,7 @@ var TermStore = require('../stores/term_store');
 var SesssionApiUtil = require('../util/session_api_util');
 
 var UserShow = React.createClass({
-  // var userId = this.props.params.userId;
-  //
-  // if (!userId) {
-  //   userId = SessionStore.currentUser().id;
-  // }
+
   getInitialState: function ()  {
     return ({ terms: [] });
   },

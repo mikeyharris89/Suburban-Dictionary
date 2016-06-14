@@ -28,8 +28,6 @@ var TermApiUtil = {
       data: {id: id},
       success: function (terms) {
         TermActions.receiveAllTerms(terms);
-      },
-      error: function() {
       }
     });
   },
@@ -41,7 +39,7 @@ var TermApiUtil = {
       data: {letter: letter},
       success: function (terms) {
         TermActions.receiveAllTerms(terms);
-      },
+      }
     });
   },
 

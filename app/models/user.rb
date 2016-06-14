@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
      user = User.create!(
        facebook_uid: auth_hash[:uid],
        username: auth_hash[:info][:name]
-      #  username: "#{auth_hash[:info][:first_name]} #{auth_hash[:info][:last_name]}"
      )
    end
 

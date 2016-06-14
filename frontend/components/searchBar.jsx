@@ -1,5 +1,4 @@
 var React = require('react'),
-    // ReactCSSTransitionGroup = require('react-addons-css-transition-group'),
     ClientActions = require('../actions/client_actions'),
     SearchStore = require('../stores/search_store');
 

@@ -644,8 +644,10 @@ nav {
 
 .browse:hover .alphabet-list {
   display: block;
+
 }
 
 .browse:hover {
   color: #EFFF00;
+  cursor: pointer;
 }

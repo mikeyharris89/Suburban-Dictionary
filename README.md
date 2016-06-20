@@ -52,7 +52,7 @@ end
 * Button to visit random term page
 
 
-#Todo
+##Todo
 
 In addition to the features you currently see, I plan on implementing additional
 ones to make my site resemble Urban Dictionary even more.

@@ -9,7 +9,7 @@ SubUrban Dictionary is a full-stack web application, clean-version of the websit
 ## Feature and Implementation
 
 ### Single-Page App
-SubUrban Diciotnary is a complete, single-page app, that allows all content to be displayed on a single-static page. The home page listenes to a 'SessionsStore', and allows functionality based upon a call to 'SessionStore.currentUser()'. Certain parts of the frontend are protected by obtaining the current user by accessing the session controller.
+SubUrban Dictionary is a complete, single-page app, that allows all content to be displayed on a single-static page. The home page listens to a 'SessionsStore', and allows functionality based upon a call to 'SessionStore.currentUser()'. Certain parts of the frontend are protected by obtaining the current user by accessing the session controller.
 
 ### Sorting Terms
 The tricky part of Urban Dictionary, is that there are lot of different ways to view definitions.

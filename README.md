@@ -6,6 +6,7 @@
 
 SubUrban Dictionary is a full-stack web application, clean-version of the website Urban Dictionary. It implements Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.
 
+![Home Screen](/app/assets/images/suburban_dictionary.png)
 ## Feature and Implementation
 
 ### Single-Page App
